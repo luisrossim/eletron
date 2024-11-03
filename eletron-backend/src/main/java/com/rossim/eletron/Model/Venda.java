@@ -15,20 +15,26 @@ public class Venda {
 
     @ManyToOne
     @JoinColumn(name = "reformado_id", nullable = false)
-    private Reformado device;
+    private Reformado reformado;
 
     @ManyToOne
     @JoinColumn(name = "cliente_id", nullable = false)
-    private Cliente customer;
+    private Cliente cliente;
 
     @ManyToOne
     @JoinColumn(name = "pagamento_forma_id", nullable = false)
     private PagamentoForma pagamentoForma;
 
-    @Column(name = "data_venda", nullable = false)
-    private LocalDateTime dataVenda;
-
-    @Column(name = "valor", nullable = false)
+    @Column(nullable = false)
     private BigDecimal valor;
+
+    @Column(name = "efetuada_em", nullable = false)
+    private LocalDateTime efetuadaEm;
+
+
+    @PrePersist
+    protected void onCreate() {
+        this.efetuadaEm = LocalDateTime.now();
+    }
 }
 

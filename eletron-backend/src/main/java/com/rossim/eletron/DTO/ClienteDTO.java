@@ -1,6 +1,5 @@
 package com.rossim.eletron.DTO;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import java.time.LocalDateTime;
 
 public record ClienteDTO (

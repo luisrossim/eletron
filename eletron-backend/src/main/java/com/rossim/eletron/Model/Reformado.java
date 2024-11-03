@@ -26,13 +26,23 @@ public class Reformado implements Serializable {
     @Column(nullable = false)
     private BigDecimal valor;
 
-    @Column(nullable = false)
-    private String status;
-
     @Column(name = "criado_em", nullable = false)
-    private LocalDateTime criadoEm = LocalDateTime.now();
+    private LocalDateTime criadoEm;
 
     @Column(name = "atualizado_em", nullable = false)
-    private LocalDateTime atualizadoEm = LocalDateTime.now();
+    private LocalDateTime atualizadoEm;
+
+
+    @PrePersist
+    protected void onCreate() {
+        LocalDateTime now = LocalDateTime.now();
+        this.criadoEm = now;
+        this.atualizadoEm = now;
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.atualizadoEm = LocalDateTime.now();
+    }
 }
 
