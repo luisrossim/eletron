@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet id="1" author="luisrossim">
+        <createTable tableName="estado_servico">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="descricao" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tipo" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="luisrossim">
+        <insert tableName="estado_servico">
+            <column name="id" value="1"/>
+            <column name="descricao" value="Recebido - O pedido foi recebido e está na fila"/>
+            <column name="tipo" value="RECEBIDO"/>
+        </insert>
+        <insert tableName="estado_servico">
+            <column name="id" value="2"/>
+            <column name="descricao" value="Aguardando Peças - O serviço está suspenso aguardando a chegada de peças"/>
+            <column name="tipo" value="AGUARDANDO_PECAS"/>
+        </insert>
+        <insert tableName="estado_servico">
+            <column name="id" value="3"/>
+            <column name="descricao" value="Em Execução - O serviço está em andamento"/>
+            <column name="tipo" value="EM_EXECUCAO"/>
+        </insert>
+        <insert tableName="estado_servico">
+            <column name="id" value="4"/>
+            <column name="descricao" value="Finalizado - O serviço foi concluído"/>
+            <column name="tipo" value="FINALIZADO"/>
+        </insert>
+        <insert tableName="estado_servico">
+            <column name="id" value="5"/>
+            <column name="descricao" value="Cancelado - O serviço foi cancelado"/>
+            <column name="tipo" value="CANCELADO"/>
+        </insert>
+        <insert tableName="estado_servico">
+            <column name="id" value="6"/>
+            <column name="descricao" value="Vendido - O aparelho foi vendido pelo cliente para o estabelecimento"/>
+            <column name="tipo" value="VENDIDO"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
