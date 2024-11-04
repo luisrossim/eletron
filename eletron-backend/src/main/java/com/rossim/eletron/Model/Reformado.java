@@ -8,11 +8,15 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table(name = "reformados")
+@Table(name = "reformado")
 public class Reformado implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "tipo_aparelho_id", nullable = false)
+    private TipoAparelho tipoAparelho;
 
     @ManyToOne
     @JoinColumn(name = "marca_id", nullable = false)

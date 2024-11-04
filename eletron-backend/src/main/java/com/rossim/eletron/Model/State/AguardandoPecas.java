@@ -1,25 +1,25 @@
 package com.rossim.eletron.Model.State;
 
-import com.rossim.eletron.Enum.EstadoServicoEnum;
-import com.rossim.eletron.Model.EstadoServico;
+import com.rossim.eletron.Enum.StatusServicoEnum;
 import com.rossim.eletron.Model.Servico;
+import com.rossim.eletron.Model.StatusServico;
 import jakarta.persistence.*;
 
 @Entity
 @DiscriminatorValue("AGUARDANDO_PECAS")
-public class AguardandoPecas extends EstadoServico {
+public class AguardandoPecas extends StatusServico {
 
     public AguardandoPecas() {
-        this.descricao = EstadoServicoEnum.AGUARDANDO_PECAS.getDescricao();
+        this.descricao = StatusServicoEnum.AGUARDANDO_PECAS.getDescricao();
     }
 
     @Override
-    public EstadoServico next(Servico current) {
+    public StatusServico next(Servico current) {
         return new EmExecucao();
     }
 
     @Override
-    public EstadoServico previous(Servico current) {
+    public StatusServico previous(Servico current) {
         return this;
     }
 

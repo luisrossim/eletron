@@ -20,7 +20,7 @@ public class Cliente implements Serializable {
     private String telefone;
 
     @Column(nullable = false)
-    private Boolean ativo = true;
+    private boolean ativo;
 
     @Column(name = "criado_em", nullable = false)
     private LocalDateTime criadoEm;
@@ -34,6 +34,7 @@ public class Cliente implements Serializable {
         LocalDateTime now = LocalDateTime.now();
         this.criadoEm = now;
         this.atualizadoEm = now;
+        this.ativo = true;
     }
 
     @PreUpdate

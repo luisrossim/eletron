@@ -12,7 +12,7 @@
 	<artifactId>eletron</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>eletron</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Eletronica Spring API</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -98,6 +98,11 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-log4j2</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>1.6.8</version>
 		</dependency>
 	</dependencies>
 

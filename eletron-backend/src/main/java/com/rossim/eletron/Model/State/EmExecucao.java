@@ -1,25 +1,26 @@
 package com.rossim.eletron.Model.State;
 
-import com.rossim.eletron.Enum.EstadoServicoEnum;
-import com.rossim.eletron.Model.EstadoServico;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.rossim.eletron.Enum.StatusServicoEnum;
 import com.rossim.eletron.Model.Servico;
+import com.rossim.eletron.Model.StatusServico;
 import jakarta.persistence.*;
 
 @Entity
 @DiscriminatorValue("EM_EXECUCAO")
-public class EmExecucao extends EstadoServico {
+public class EmExecucao extends StatusServico {
 
     public EmExecucao() {
-        this.descricao = EstadoServicoEnum.EM_EXECUCAO.getDescricao();
+        this.descricao = StatusServicoEnum.EM_EXECUCAO.getDescricao();
     }
 
     @Override
-    public EstadoServico next(Servico current) {
+    public StatusServico next(Servico current) {
         return new Finalizado();
     }
 
     @Override
-    public EstadoServico previous(Servico current) {
+    public StatusServico previous(Servico current) {
         return this;
     }
 

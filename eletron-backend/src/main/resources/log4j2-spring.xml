@@ -22,6 +22,9 @@
         <Logger name="com.rossim.eletron.Service.VendaService" level="info" additivity="false">
             <AppenderRef ref="SpecificFile" />
         </Logger>
+        <Logger name="com.rossim.eletron.Service.ServicoService" level="info" additivity="false">
+            <AppenderRef ref="SpecificFile" />
+        </Logger>
         <Logger name="com.rossim.eletron.Service.UsuarioService" level="info" additivity="false">
             <AppenderRef ref="UserActionsFile" />
         </Logger>

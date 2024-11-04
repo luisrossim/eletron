@@ -19,8 +19,9 @@ public class Servico implements Serializable {
     @JoinColumn(name = "cliente_id", nullable = false)
     private Cliente cliente;
 
-    @Column
-    private String descricao;
+    @ManyToOne
+    @JoinColumn(name = "tipo_aparelho_id", nullable = false)
+    private TipoAparelho tipoAparelho;
 
     @ManyToOne
     @JoinColumn(name = "marca_id", nullable = false)
@@ -34,14 +35,14 @@ public class Servico implements Serializable {
     )
     private Set<Defeito> defeitos;
 
-    @Column(nullable = false)
-    private String status;
-
-    private BigDecimal valor;
+    @Column
+    private String descricao;
 
     @ManyToOne
-    @JoinColumn(name = "usuario_id", nullable = false)
-    private Usuario usuario;
+    @JoinColumn(name = "status_id")
+    private StatusServico status;
+
+    private BigDecimal valor;
 
     @Column(name = "criado_em", nullable = false)
     private LocalDateTime criadoEm;
@@ -51,5 +52,18 @@ public class Servico implements Serializable {
 
     @Column(name = "finalizado_em")
     private LocalDateTime finalizadoEm;
+
+
+    @PrePersist
+    protected void onCreate() {
+        LocalDateTime now = LocalDateTime.now();
+        this.criadoEm = now;
+        this.atualizadoEm = now;
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.atualizadoEm = LocalDateTime.now();
+    }
 }
 

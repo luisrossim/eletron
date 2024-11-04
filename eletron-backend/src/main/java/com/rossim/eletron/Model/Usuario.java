@@ -24,7 +24,7 @@ public class Usuario implements Serializable {
     private String senha;
 
     @Column(nullable = false)
-    private Boolean ativo = true;
+    private boolean ativo = true;
 
     @Column(name = "criado_em", nullable = false)
     private LocalDateTime criadoEm = LocalDateTime.now();

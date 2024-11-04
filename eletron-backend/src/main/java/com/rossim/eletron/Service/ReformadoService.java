@@ -1,12 +1,15 @@
 package com.rossim.eletron.Service;
 
 import com.rossim.eletron.DTO.ReformadoDTO;
+import com.rossim.eletron.DTO.TipoAparelhoDTO;
 import com.rossim.eletron.Exception.RecordNotFoundException;
 import com.rossim.eletron.Model.Marca;
 import com.rossim.eletron.Model.Reformado;
+import com.rossim.eletron.Model.TipoAparelho;
 import com.rossim.eletron.Repository.MarcaRepository;
 import com.rossim.eletron.Repository.ReformadoRepository;
 import com.rossim.eletron.Mapper.ReformadoMapper;
+import com.rossim.eletron.Repository.TipoAparelhoRepository;
 import com.rossim.eletron.Utils.Constants;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -27,11 +30,13 @@ public class ReformadoService {
 
     private final ReformadoRepository reformadoRepository;
     private final MarcaRepository marcaRepository;
+    private final TipoAparelhoRepository tipoAparelhoRepository;
     private final ReformadoMapper reformadoMapper;
 
 
     public ReformadoDTO create(@Valid ReformadoDTO reformadoDTO) {
         Marca marca = findMarca(reformadoDTO.marca().id());
+        TipoAparelho tipoAparelho = findTipoAparelho(reformadoDTO.tipoAparelho().id());
 
         Reformado reformado = reformadoMapper.toEntity(reformadoDTO);
         Reformado savedReformado = reformadoRepository.save(reformado);
@@ -46,8 +51,11 @@ public class ReformadoService {
                     BeanUtils.copyProperties(reformadoDTO, registrobusca, "id", "criadoEm");
 
                     Marca marca = findMarca(reformadoDTO.marca().id());
+                    TipoAparelho tipoAparelho = findTipoAparelho(reformadoDTO.tipoAparelho().id());
 
                     registrobusca.setMarca(marca);
+                    registrobusca.setTipoAparelho(tipoAparelho);
+
                     return reformadoMapper.toDTO(reformadoRepository.save(registrobusca));
                 })
                 .orElseThrow(() -> new RecordNotFoundException(Constants.REFORMADO_NOT_FOUND));
@@ -80,5 +88,10 @@ public class ReformadoService {
     private Marca findMarca(Long marcaId) {
         return marcaRepository.findById(marcaId)
                 .orElseThrow(() -> new RecordNotFoundException(Constants.MARCA_NOT_FOUND));
+    }
+
+    private TipoAparelho findTipoAparelho(Long tipoId) {
+        return tipoAparelhoRepository.findById(tipoId)
+                .orElseThrow(() -> new RecordNotFoundException(Constants.TIPO_APARELHO_NOT_FOUND));
     }
 }
