@@ -10,9 +10,7 @@ import jakarta.persistence.*;
 @DiscriminatorValue("RECEBIDO")
 public class Recebido extends StatusServico {
 
-    public Recebido() {
-        this.descricao = StatusServicoEnum.RECEBIDO.getDescricao();
-    }
+    public Recebido() { this.setId(StatusServicoEnum.RECEBIDO.getId()); }
 
     @Override
     public StatusServico next(Servico current) {

@@ -65,5 +65,16 @@ public class Servico implements Serializable {
     protected void onUpdate() {
         this.atualizadoEm = LocalDateTime.now();
     }
+
+
+    public StatusServico nextState() {
+        StatusServico current = getStatus();
+        return current.next(this);
+    }
+
+    public StatusServico previousState() {
+        StatusServico current = getStatus();
+        return current.previous(this);
+    }
 }
 

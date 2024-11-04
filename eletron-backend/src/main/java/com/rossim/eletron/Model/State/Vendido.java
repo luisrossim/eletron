@@ -10,9 +10,7 @@ import jakarta.persistence.Entity;
 @DiscriminatorValue("VENDIDO")
 public class Vendido extends StatusServico {
 
-    public Vendido() {
-        this.descricao = StatusServicoEnum.VENDIDO.getDescricao();
-    }
+    public Vendido() { this.setId(StatusServicoEnum.VENDIDO.getId()); }
 
     @Override
     public StatusServico next(Servico current) {

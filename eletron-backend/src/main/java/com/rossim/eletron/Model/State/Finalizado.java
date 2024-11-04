@@ -9,9 +9,7 @@ import jakarta.persistence.*;
 @DiscriminatorValue("FINALIZADO")
 public class Finalizado extends StatusServico {
 
-    public Finalizado() {
-        this.descricao = StatusServicoEnum.FINALIZADO.getDescricao();
-    }
+    public Finalizado() { this.setId(StatusServicoEnum.FINALIZADO.getId()); }
 
     @Override
     public StatusServico next(Servico current) {

@@ -1,5 +1,6 @@
 package com.rossim.eletron.Controller;
 
+import com.rossim.eletron.DTO.ChangeStatusDTO;
 import com.rossim.eletron.DTO.ServicoDTO;
 import com.rossim.eletron.Service.ServicoService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -52,5 +53,12 @@ public class ServicoController {
     public ResponseEntity<List<ServicoDTO>> findAll() {
         List<ServicoDTO> servicoDTOList = servicoService.findAll();
         return new ResponseEntity<>(servicoDTOList, servicoDTOList.isEmpty() ? HttpStatus.NO_CONTENT : HttpStatus.OK);
+    }
+
+    @PatchMapping("/status")
+    @Operation(description = "Alterar status do servico")
+    public ResponseEntity<ServicoDTO> changeStatus(@RequestBody @Valid ChangeStatusDTO changeStatusDTO) {
+        ServicoDTO updatedServico = servicoService.changeStatus(changeStatusDTO);
+        return new ResponseEntity<>(updatedServico, HttpStatus.OK);
     }
 }

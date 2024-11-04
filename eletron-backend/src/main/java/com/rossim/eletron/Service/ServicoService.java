@@ -1,11 +1,12 @@
 package com.rossim.eletron.Service;
 
+import com.rossim.eletron.DTO.ChangeStatusDTO;
 import com.rossim.eletron.DTO.ServicoDTO;
+import com.rossim.eletron.Enum.StatesAction;
 import com.rossim.eletron.Exception.RecordNotFoundException;
 import com.rossim.eletron.Model.Cliente;
-import com.rossim.eletron.Model.StatusServico;
 import com.rossim.eletron.Model.Servico;
-import com.rossim.eletron.Model.State.*;
+import com.rossim.eletron.Model.StatusServico;
 import com.rossim.eletron.Repository.ClienteRepository;
 import com.rossim.eletron.Repository.ServicoRepository;
 import com.rossim.eletron.Mapper.ServicoMapper;
@@ -55,6 +56,20 @@ public class ServicoService {
     }
 
 
+    public ServicoDTO changeStatus(@Valid ChangeStatusDTO changeStatusDTO) {
+        Servico registrobusca = servicoRepository.findById(changeStatusDTO.servicoId())
+                .orElseThrow(() -> new RecordNotFoundException(Constants.SERVICO_NOT_FOUND));
+
+        registrobusca.setStatus(
+                isNextState(changeStatusDTO.action())
+                ? registrobusca.nextState()
+                : registrobusca.previousState()
+        );
+
+        return servicoMapper.toDTO(servicoRepository.save(registrobusca));
+    }
+
+
     public void delete(@PathVariable Long id){
         Servico servico = servicoRepository.findById(id).orElseThrow(() -> new RecordNotFoundException(Constants.SERVICO_NOT_FOUND));
         servicoRepository.delete(servico);
@@ -80,5 +95,9 @@ public class ServicoService {
     private Cliente findCliente(Long clienteId) {
         return clienteRepository.findById(clienteId)
                 .orElseThrow(() -> new RecordNotFoundException(Constants.CLIENTE_NOT_FOUND));
+    }
+
+    private boolean isNextState(String state) {
+        return state.equals(StatesAction.NEXT.getDescricao());
     }
 }

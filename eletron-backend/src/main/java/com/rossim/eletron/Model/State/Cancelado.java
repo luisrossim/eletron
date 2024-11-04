@@ -10,9 +10,7 @@ import jakarta.persistence.Entity;
 @DiscriminatorValue("CANCELADO")
 public class Cancelado extends StatusServico {
 
-    public Cancelado() {
-        this.descricao = StatusServicoEnum.CANCELADO.getDescricao();
-    }
+    public Cancelado() { this.setId(StatusServicoEnum.CANCELADO.getId()); }
 
     @Override
     public StatusServico next(Servico current) {
