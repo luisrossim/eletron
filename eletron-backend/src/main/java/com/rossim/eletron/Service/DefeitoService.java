@@ -5,6 +5,7 @@ import com.rossim.eletron.Exception.RecordNotFoundException;
 import com.rossim.eletron.Model.Defeito;
 import com.rossim.eletron.Repository.DefeitoRepository;
 import com.rossim.eletron.Mapper.DefeitoMapper;
+import com.rossim.eletron.Utils.Constants;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -36,11 +37,11 @@ public class DefeitoService {
                     BeanUtils.copyProperties(defeitoDTO, registrobusca, "id");
                     return defeitoMapper.toDTO(defeitoRepository.save(registrobusca));
                 })
-                .orElseThrow(() -> new RecordNotFoundException(id));
+                .orElseThrow(() -> new RecordNotFoundException(Constants.DEFEITO_NOT_FOUND));
     }
 
     public void delete(@PathVariable Long id){
-        Defeito defeito = defeitoRepository.findById(id).orElseThrow(() -> new RecordNotFoundException(id));
+        Defeito defeito = defeitoRepository.findById(id).orElseThrow(() -> new RecordNotFoundException(Constants.DEFEITO_NOT_FOUND));
         defeitoRepository.delete(defeito);
     }
 
@@ -53,6 +54,6 @@ public class DefeitoService {
     public DefeitoDTO findById(@PathVariable Long id) {
         return defeitoRepository.findById(id)
                 .map(defeitoMapper::toDTO)
-                .orElseThrow(() -> new RecordNotFoundException(id));
+                .orElseThrow(() -> new RecordNotFoundException(Constants.DEFEITO_NOT_FOUND));
     }
 }

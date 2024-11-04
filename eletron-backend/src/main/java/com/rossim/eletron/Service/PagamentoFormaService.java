@@ -5,6 +5,7 @@ import com.rossim.eletron.Exception.RecordNotFoundException;
 import com.rossim.eletron.Model.PagamentoForma;
 import com.rossim.eletron.Repository.PagamentoFormaRepository;
 import com.rossim.eletron.Mapper.PagamentoFormaMapper;
+import com.rossim.eletron.Utils.Constants;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -36,11 +37,11 @@ public class PagamentoFormaService {
                     BeanUtils.copyProperties(pagamentoFormaDTO, registrobusca, "id");
                     return pagamentoFormaMapper.toDTO(pagamentoFormaRepository.save(registrobusca));
                 })
-                .orElseThrow(() -> new RecordNotFoundException(id));
+                .orElseThrow(() -> new RecordNotFoundException(Constants.FORMA_NOT_FOUND));
     }
 
     public void delete(@PathVariable Long id){
-        PagamentoForma pagamentoForma = pagamentoFormaRepository.findById(id).orElseThrow(() -> new RecordNotFoundException(id));
+        PagamentoForma pagamentoForma = pagamentoFormaRepository.findById(id).orElseThrow(() -> new RecordNotFoundException(Constants.FORMA_NOT_FOUND));
         pagamentoFormaRepository.delete(pagamentoForma);
     }
 
@@ -53,6 +54,6 @@ public class PagamentoFormaService {
     public PagamentoFormaDTO findById(@PathVariable Long id) {
         return pagamentoFormaRepository.findById(id)
                 .map(pagamentoFormaMapper::toDTO)
-                .orElseThrow(() -> new RecordNotFoundException(id));
+                .orElseThrow(() -> new RecordNotFoundException(Constants.FORMA_NOT_FOUND));
     }
 }

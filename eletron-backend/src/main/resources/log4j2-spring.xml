@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{dd-MM-yyyy HH:mm:ss} %-5level %logger{36} - %msg%n" />
+        </Console>
+        <File name="GeneralFile" fileName="logs/application-general.log">
+            <PatternLayout pattern="%d{dd-MM-yyyy HH:mm:ss} %-5level %logger{36} - %msg%n" />
+        </File>
+        <File name="SpecificFile" fileName="logs/application-specific.log">
+            <PatternLayout pattern="%d{dd-MM-yyyy HH:mm:ss} %-5level %logger{36} - %msg%n" />
+        </File>
+        <File name="UserActionsFile" fileName="logs/application-user-actions.log">
+            <PatternLayout pattern="%d{dd-MM-yyyy HH:mm:ss} %-5level %logger{36} - %msg%n" />
+        </File>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="GeneralFile" />
+        </Root>
+        <Logger name="com.rossim.eletron.Service.VendaService" level="info" additivity="false">
+            <AppenderRef ref="SpecificFile" />
+        </Logger>
+        <Logger name="com.rossim.eletron.Service.UsuarioService" level="info" additivity="false">
+            <AppenderRef ref="UserActionsFile" />
+        </Logger>
+    </Loggers>
+</Configuration>
+

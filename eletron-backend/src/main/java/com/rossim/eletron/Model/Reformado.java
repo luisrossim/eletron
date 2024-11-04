@@ -26,6 +26,9 @@ public class Reformado implements Serializable {
     @Column(nullable = false)
     private BigDecimal valor;
 
+    @Column(nullable = false)
+    private boolean vendido;
+
     @Column(name = "criado_em", nullable = false)
     private LocalDateTime criadoEm;
 
@@ -38,6 +41,7 @@ public class Reformado implements Serializable {
         LocalDateTime now = LocalDateTime.now();
         this.criadoEm = now;
         this.atualizadoEm = now;
+        this.vendido = false;
     }
 
     @PreUpdate

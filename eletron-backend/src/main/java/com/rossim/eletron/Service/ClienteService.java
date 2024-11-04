@@ -5,6 +5,7 @@ import com.rossim.eletron.Exception.RecordNotFoundException;
 import com.rossim.eletron.Model.Cliente;
 import com.rossim.eletron.Repository.ClienteRepository;
 import com.rossim.eletron.Mapper.ClienteMapper;
+import com.rossim.eletron.Utils.Constants;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -36,11 +37,11 @@ public class ClienteService {
                     BeanUtils.copyProperties(clienteDTO, registrobusca, "id", "criadoEm");
                     return clienteMapper.toDTO(clienteRepository.save(registrobusca));
                 })
-                .orElseThrow(() -> new RecordNotFoundException(id));
+                .orElseThrow(() -> new RecordNotFoundException(Constants.CLIENTE_NOT_FOUND));
     }
 
     public void delete(@PathVariable Long id){
-        Cliente cliente = clienteRepository.findById(id).orElseThrow(() -> new RecordNotFoundException(id));
+        Cliente cliente = clienteRepository.findById(id).orElseThrow(() -> new RecordNotFoundException(Constants.CLIENTE_NOT_FOUND));
         cliente.setAtivo(false);
         clienteRepository.save(cliente);
     }
@@ -54,6 +55,6 @@ public class ClienteService {
     public ClienteDTO findById(@PathVariable Long id) {
         return clienteRepository.findById(id)
                 .map(clienteMapper::toDTO)
-                .orElseThrow(() -> new RecordNotFoundException(id));
+                .orElseThrow(() -> new RecordNotFoundException(Constants.CLIENTE_NOT_FOUND));
     }
 }

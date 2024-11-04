@@ -7,9 +7,11 @@ import com.rossim.eletron.Model.Reformado;
 import com.rossim.eletron.Repository.MarcaRepository;
 import com.rossim.eletron.Repository.ReformadoRepository;
 import com.rossim.eletron.Mapper.ReformadoMapper;
+import com.rossim.eletron.Utils.Constants;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.tomcat.util.bcel.Const;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
@@ -27,30 +29,37 @@ public class ReformadoService {
     private final MarcaRepository marcaRepository;
     private final ReformadoMapper reformadoMapper;
 
+
     public ReformadoDTO create(@Valid ReformadoDTO reformadoDTO) {
+        Marca marca = findMarca(reformadoDTO.marca().id());
+
         Reformado reformado = reformadoMapper.toEntity(reformadoDTO);
         Reformado savedReformado = reformadoRepository.save(reformado);
+
         return reformadoMapper.toDTO(savedReformado);
     }
+
 
     public ReformadoDTO update(Long id, @Valid ReformadoDTO reformadoDTO) {
         return reformadoRepository.findById(id)
                 .map(registrobusca -> {
                     BeanUtils.copyProperties(reformadoDTO, registrobusca, "id", "criadoEm");
 
-                    Marca marca = marcaRepository.findById(reformadoDTO.marca().id())
-                            .orElseThrow(() -> new RecordNotFoundException(reformadoDTO.marca().id(), "marca"));
+                    Marca marca = findMarca(reformadoDTO.marca().id());
 
                     registrobusca.setMarca(marca);
                     return reformadoMapper.toDTO(reformadoRepository.save(registrobusca));
                 })
-                .orElseThrow(() -> new RecordNotFoundException(id));
+                .orElseThrow(() -> new RecordNotFoundException(Constants.REFORMADO_NOT_FOUND));
     }
 
+
     public void delete(@PathVariable Long id){
-        Reformado reformado = reformadoRepository.findById(id).orElseThrow(() -> new RecordNotFoundException(id));
+        Reformado reformado = reformadoRepository.findById(id)
+                .orElseThrow(() -> new RecordNotFoundException(Constants.REFORMADO_NOT_FOUND));
         reformadoRepository.delete(reformado);
     }
+
 
     public List<ReformadoDTO> findAll() {
         return reformadoRepository.findAll().stream()
@@ -58,9 +67,18 @@ public class ReformadoService {
                 .collect(Collectors.toList());
     }
 
+
     public ReformadoDTO findById(@PathVariable Long id) {
         return reformadoRepository.findById(id)
                 .map(reformadoMapper::toDTO)
-                .orElseThrow(() -> new RecordNotFoundException(id));
+                .orElseThrow(() -> new RecordNotFoundException(Constants.REFORMADO_NOT_FOUND));
+    }
+
+
+
+
+    private Marca findMarca(Long marcaId) {
+        return marcaRepository.findById(marcaId)
+                .orElseThrow(() -> new RecordNotFoundException(Constants.MARCA_NOT_FOUND));
     }
 }

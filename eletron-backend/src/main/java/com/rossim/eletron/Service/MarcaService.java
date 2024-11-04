@@ -5,6 +5,7 @@ import com.rossim.eletron.Exception.RecordNotFoundException;
 import com.rossim.eletron.Model.Marca;
 import com.rossim.eletron.Repository.MarcaRepository;
 import com.rossim.eletron.Mapper.MarcaMapper;
+import com.rossim.eletron.Utils.Constants;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -36,11 +37,11 @@ public class MarcaService {
                     BeanUtils.copyProperties(marcaDTO, registrobusca, "id");
                     return marcaMapper.toDTO(marcaRepository.save(registrobusca));
                 })
-                .orElseThrow(() -> new RecordNotFoundException(id));
+                .orElseThrow(() -> new RecordNotFoundException(Constants.MARCA_NOT_FOUND));
     }
 
     public void delete(@PathVariable Long id){
-        Marca marca = marcaRepository.findById(id).orElseThrow(() -> new RecordNotFoundException(id));
+        Marca marca = marcaRepository.findById(id).orElseThrow(() -> new RecordNotFoundException(Constants.MARCA_NOT_FOUND));
         marcaRepository.delete(marca);
     }
 
@@ -53,6 +54,6 @@ public class MarcaService {
     public MarcaDTO findById(@PathVariable Long id) {
         return marcaRepository.findById(id)
                 .map(marcaMapper::toDTO)
-                .orElseThrow(() -> new RecordNotFoundException(id));
+                .orElseThrow(() -> new RecordNotFoundException(Constants.MARCA_NOT_FOUND));
     }
 }

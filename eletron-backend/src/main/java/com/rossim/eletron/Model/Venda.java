@@ -14,7 +14,7 @@ public class Venda {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "reformado_id", nullable = false)
+    @JoinColumn(name = "reformado_id", unique = true, nullable = false)
     private Reformado reformado;
 
     @ManyToOne
