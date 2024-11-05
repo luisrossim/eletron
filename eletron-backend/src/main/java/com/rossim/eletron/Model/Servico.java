@@ -29,13 +29,13 @@ public class Servico implements Serializable {
     @JoinColumn(name = "marca_id", nullable = false)
     private Marca marca;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "servico_defeito",
             joinColumns = @JoinColumn(name = "servico_id"),
             inverseJoinColumns = @JoinColumn(name = "defeito_id")
     )
-    private Set<Defeito> defeitos;
+    private List<Defeito> defeitos;
 
     @Column
     private String descricao;
@@ -44,6 +44,7 @@ public class Servico implements Serializable {
     @JoinColumn(name = "status_id")
     private StatusServico status;
 
+    @Column
     private BigDecimal valor;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

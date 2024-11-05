@@ -3,6 +3,7 @@ package com.rossim.eletron.Model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -17,5 +18,5 @@ public class Defeito {
     private String nome;
 
     @ManyToMany(mappedBy = "defeitos")
-    private Set<Servico> servicos;
+    private List<Servico> servicos;
 }

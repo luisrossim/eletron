@@ -3,6 +3,7 @@ package com.rossim.eletron.DTO;
 import com.rossim.eletron.Model.StatusServico;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
 public record ServicoDTO (
@@ -10,7 +11,7 @@ public record ServicoDTO (
         ClienteDTO cliente,
         TipoAparelhoDTO tipoAparelho,
         MarcaDTO marca,
-        Set<DefeitoDTO> defeitos,
+        List<DefeitoDTO> defeitos,
         String descricao,
         StatusServico status,
         BigDecimal valor,

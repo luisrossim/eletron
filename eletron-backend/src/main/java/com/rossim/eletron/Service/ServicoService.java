@@ -56,10 +56,14 @@ public class ServicoService {
 
         Cliente cliente = findCliente(servicoDTO.cliente().id());
 
-        BeanUtils.copyProperties(servicoDTO, registrobusca, "id", "criadoEm", "status");
-        registrobusca.setCliente(cliente);
+        //BeanUtils.copyProperties(servicoDTO, registrobusca, "id", "criadoEm", "status");
 
-        return servicoMapper.toDTO(servicoRepository.save(registrobusca));
+        Servico servicoEntity = servicoMapper.toEntity(servicoDTO);
+        servicoEntity.setId(id);
+        servicoEntity.setCriadoEm(registrobusca.getCriadoEm());
+        servicoEntity.setStatus(registrobusca.getStatus());
+
+        return servicoMapper.toDTO(servicoRepository.save(servicoEntity));
     }
 
 
