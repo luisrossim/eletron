@@ -5,6 +5,7 @@ import com.rossim.eletron.DTO.ServicoDTO;
 import com.rossim.eletron.Enum.StatesAction;
 import com.rossim.eletron.Exception.RecordNotFoundException;
 import com.rossim.eletron.Model.Cliente;
+import com.rossim.eletron.Model.HistoricoServico;
 import com.rossim.eletron.Model.Servico;
 import com.rossim.eletron.Model.StatusServico;
 import com.rossim.eletron.Repository.ClienteRepository;
@@ -18,6 +19,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,6 +39,10 @@ public class ServicoService {
         Cliente cliente = findCliente(servicoDTO.cliente().id());
 
         Servico servico = servicoMapper.toEntity(servicoDTO);
+
+        HistoricoServico historico = createHistoricoServico(servico, "Serviço cadastrado");
+        servico.getHistoricoServico().add(historico);
+
         Servico savedServico = servicoRepository.save(servico);
 
         log.info("Servico cadastrado com sucesso (Cliente: " + cliente.getId() + ")");
@@ -66,6 +73,9 @@ public class ServicoService {
                 : registrobusca.previousState()
         );
 
+        HistoricoServico historico = createHistoricoServico(registrobusca, changeStatusDTO.comments());
+        registrobusca.getHistoricoServico().add(historico);
+
         return servicoMapper.toDTO(servicoRepository.save(registrobusca));
     }
 
@@ -90,14 +100,22 @@ public class ServicoService {
     }
 
 
-
-
     private Cliente findCliente(Long clienteId) {
         return clienteRepository.findById(clienteId)
                 .orElseThrow(() -> new RecordNotFoundException(Constants.CLIENTE_NOT_FOUND));
     }
 
+
     private boolean isNextState(String state) {
         return state.equals(StatesAction.NEXT.getDescricao());
+    }
+
+
+    private HistoricoServico createHistoricoServico(Servico servico, String comments) {
+        return HistoricoServico.builder()
+            .comments(comments)
+            .status(servico.getStatus())
+            .criadoEm(LocalDateTime.now())
+            .build();
     }
 }

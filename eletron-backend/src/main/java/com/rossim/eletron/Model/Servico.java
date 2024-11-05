@@ -5,6 +5,8 @@ import lombok.Data;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -43,6 +45,10 @@ public class Servico implements Serializable {
     private StatusServico status;
 
     private BigDecimal valor;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "servico_id")
+    private List<HistoricoServico> historicoServico = new ArrayList<>();
 
     @Column(name = "criado_em", nullable = false)
     private LocalDateTime criadoEm;

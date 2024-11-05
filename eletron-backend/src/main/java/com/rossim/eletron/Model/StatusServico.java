@@ -1,8 +1,7 @@
 package com.rossim.eletron.Model;
 
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.rossim.eletron.Model.State.*;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.rossim.eletron.Deserializer.StatusServicoDeserializer;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.io.Serializable;
@@ -12,15 +11,7 @@ import java.io.Serializable;
 @Table(name = "status_servico")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "tipo", discriminatorType = DiscriminatorType.STRING)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "tipo")
-@JsonSubTypes({
-        @JsonSubTypes.Type(value = Recebido.class, name = "RECEBIDO"),
-        @JsonSubTypes.Type(value = AguardandoPecas.class, name = "AGUARDANDO_PECAS"),
-        @JsonSubTypes.Type(value = EmExecucao.class, name = "EM_EXECUCAO"),
-        @JsonSubTypes.Type(value = Finalizado.class, name = "FINALIZADO"),
-        @JsonSubTypes.Type(value = Vendido.class, name = "VENDIDO"),
-        @JsonSubTypes.Type(value = Cancelado.class, name = "CANCELADO")
-})
+@JsonDeserialize(using = StatusServicoDeserializer.class)
 public abstract class StatusServico implements Serializable {
     @Id
     @Column(name = "id")

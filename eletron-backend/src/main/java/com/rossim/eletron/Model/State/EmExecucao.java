@@ -10,7 +10,10 @@ import jakarta.persistence.*;
 @DiscriminatorValue("EM_EXECUCAO")
 public class EmExecucao extends StatusServico {
 
-    public EmExecucao() { this.setId(StatusServicoEnum.EM_EXECUCAO.getId()); }
+    public EmExecucao() {
+        this.setId(StatusServicoEnum.EM_EXECUCAO.getId());
+        this.setDescricao(StatusServicoEnum.EM_EXECUCAO.getDescricao());
+    }
 
     @Override
     public StatusServico next(Servico current) {

@@ -9,7 +9,10 @@ import jakarta.persistence.*;
 @DiscriminatorValue("AGUARDANDO_PECAS")
 public class AguardandoPecas extends StatusServico {
 
-    public AguardandoPecas() { this.setId(StatusServicoEnum.AGUARDANDO_PECAS.getId()); }
+    public AguardandoPecas() {
+        this.setId(StatusServicoEnum.AGUARDANDO_PECAS.getId());
+        this.setDescricao(StatusServicoEnum.AGUARDANDO_PECAS.getDescricao());
+    }
 
     @Override
     public StatusServico next(Servico current) {
