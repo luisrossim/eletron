@@ -1,0 +1,16 @@
+<p-toast></p-toast>
+
+@if (loading) { 
+    <div class="progress-container">
+        <p-progressBar 
+            mode="indeterminate" 
+            [style]="{'height': '4px', 'border-radius': '0px'}" 
+        /> 
+    </div>
+}
+
+<app-nav></app-nav>
+<div class="container mx-auto pt-16">
+    <router-outlet></router-outlet>
+</div>
+<app-footer></app-footer>

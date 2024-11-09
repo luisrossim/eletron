@@ -1,0 +1,66 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap');
+@import "primeng/resources/themes/aura-light-noir/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+@import "primeflex/primeflex.scss";
+
+@tailwind components;
+@tailwind utilities;
+
+@layer reset, primeng;
+
+@layer reset {
+    button {
+        &:focus {
+            box-shadow: none;
+        }
+    }
+
+    .p-toast {
+        width: auto;
+        margin-left: 20px;
+    }
+
+    .p-menubar .p-menuitem.p-highlight > .p-menuitem-content {
+        background: none;
+    }
+
+    .p-menubar {
+        border-radius: 0px;
+    }
+}
+
+html { 
+    font-size: 15px; 
+}
+
+body { 
+    margin: 0;
+}
+
+body, .p-toast { 
+    font-family: 'Mona Sans', sans-serif !important; 
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background: #b8b8b8;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #a3a3a3;
+}
+::selection {
+    background-color: #33a3ff;
+    color: white;
+    text-shadow: none;
+}
+
+.from-pink-500, .to-violet-500 {
+    --tw-gradient-from-position: ;
+    --tw-gradient-via-position: ;
+    --tw-gradient-to-position: ;
+}
