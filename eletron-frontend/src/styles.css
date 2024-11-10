@@ -23,8 +23,12 @@
         margin-left: 20px;
     }
 
-    .p-menubar .p-menuitem.p-highlight > .p-menuitem-content {
-        background: none;
+    .p-button.p-button-lg {
+        padding: 35px;
+    }
+
+    .p-button.p-button-lg .p-button-icon {
+        font-size: 36px;
     }
 }
 
@@ -37,6 +41,17 @@ body {
     margin: 0;
 }
 
+@font-face {
+    font-family: 'Montserrat', sans-serif !important; 
+    font-named-instance:"Regular" !important;
+    src: url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap') !important;
+}
+
+:root {
+    font-family: 'Montserrat', sans-serif !important; 
+    --font-family: "Montserrat", sans-serif !important;
+}
+
 body, .p-toast { 
     font-family: 'Montserrat', sans-serif !important; 
 }
@@ -46,6 +61,8 @@ body, .p-toast {
     height: auto;
 }
 
-main .title {
-    line-height: 1.2;
+.from-blue-500, .to-purple-500 {
+    --tw-gradient-from-position: ;
+    --tw-gradient-via-position: ;
+    --tw-gradient-to-position: ;
 }
