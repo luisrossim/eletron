@@ -1,47 +1,58 @@
-import { Component, inject, OnInit, ViewChild } from '@angular/core';
-import { ToastService } from "../../utils/services/toast.service";
+import { Component, OnInit } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
-import { AvatarModule } from 'primeng/avatar';
-import { Sidebar } from 'primeng/sidebar';
-import { ProgressBarModule } from 'primeng/progressbar';
 import { CardModule } from 'primeng/card';
-import { SidebarModule } from 'primeng/sidebar';
-import { StyleClassModule } from 'primeng/styleclass';
-import { ClienteService } from '../../core/services/cliente.service';
-import { Cliente } from '../../models/cliente';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { latLng, marker, tileLayer, icon } from 'leaflet';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ButtonModule, AvatarModule, ProgressBarModule, CardModule, SidebarModule, StyleClassModule],
+  imports: [ButtonModule, CardModule, LeafletModule, RouterModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
-  @ViewChild('sidebarRef') sidebarRef!: Sidebar;
-  toastService = inject(ToastService);
-  clienteService = inject(ClienteService)
-  sidebarVisible: boolean = false;
-  clientes: Cliente[] = [];
+  customIcon = icon({
+    iconUrl: 'assets/img/logo-eletron.png',
+    iconSize: [32, 32],
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -32] 
+  });
 
-  ngOnInit(): void {
-    this.fetchClientes();
-  }
+  options = {
+    layers: [
+      tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: '&copy; <a href="https://carto.com/">CartoDB</a> contributors'
+      })
+    ],
+    zoom: 15,
+    center: latLng(-18.706542062096952, -40.401385467076366),
+  };
 
-  closeCallback(e:any): void {
-    this.sidebarRef.close(e);
-  }
+  marker = marker([-18.707342062096952, -40.401385467076366], { icon: this.customIcon }).bindPopup(
+    `<div class="popup-content">
+      <h4 class="mb-1">Eletrônica do Luis</h4>
+      <p class="flex text-yellow-400 mt-0 mb-2 gap-1">
+        <span class="mr-1">4,6</span>
+        <i class="pi pi-star-fill"></i>
+        <i class="pi pi-star-fill"></i>
+        <i class="pi pi-star-fill"></i>
+        <i class="pi pi-star-fill"></i>
+        <i class="pi pi-star-half-fill"></i>
+      </p>
+      <a href="https://maps.google.com/maps/dir//Eletr%C3%B4nica+do+Luis+R.+Esp%C3%ADrito+Santo,+121+-+Beira+Rio+Nova+Ven%C3%A9cia+-+ES+29830-000/@-18.707284,-40.4013411,16z/data=!4m5!4m4!1m0!1m2!1m1!1s0xb5db42e8029599:0x3edcf99222fca05a" target="_blank" class="no-underline" rel="noopener noreferrer">
+        Como chegar?
+      </a>
+    </div>`
+  );
 
-  private fetchClientes(){
-    this.clienteService.getAll().subscribe({
-      next: (clientes) => {
-        this.clientes = clientes;
-      },
-      error: (error) => {
-        this.toastService.send({
-          severity: "error", detail: "Erro ao buscar clientes", summary: "Error",
-        });
-      }
-    });
+  constructor(){}
+
+  ngOnInit() {
+    setTimeout(() => {
+      this.marker.openPopup();
+    }, 1500); 
   }
 }
