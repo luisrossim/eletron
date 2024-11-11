@@ -1,3 +1,13 @@
+main .title {
+	line-height: 1.1;
+}
+
+.icon-section {
+    opacity: 1;
+    filter: saturate(30%);
+    transform: translateY(50px);
+}
+
 .main-background {
     background-size: cover;
     background-position: bottom;
@@ -10,21 +20,12 @@
     background-repeat: no-repeat; 
 }
 
-main .title {
-	line-height: 1.1;
+.horario-descricao div span, .horario-descricao div strong {
+    font-size: 20px;
 }
 
-#image {
-    opacity: 0;
-    transform: translateX(100px);
-}
-
-#text {
-    opacity: 0;
-    transform: translateX(-100px);
-}
-
-#horario {
-    opacity: 0;
-    transform: translateY(-50px);
+@media (max-width: 768px) {
+    .horario-descricao div span, .horario-descricao div strong {
+        font-size: 16px;
+    }
 }

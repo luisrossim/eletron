@@ -10,8 +10,8 @@ export const routes: Routes = [
     },
     {
         path: 'sistema',
-        component: LoginComponent,
         children: [
+            { path: '', component: LoginComponent },
             { path: 'painel', component: PainelComponent }
         ]
     },

@@ -18,58 +18,83 @@
     </div>
 </header>
 
-<main #main class="container mx-auto py-4 my-5 md:my-7 px-4 md:px-6 main-background" style="background-image: url('assets/img/bg-logo-eletron.png')">
+
+<main #main class="container mx-auto py-4 mt-5 md:mt-8 px-4 md:px-6 main-background" style="background-image: url('assets/img/bg-logo-eletron.png')">
     <div class="flex flex-col text-center md:text-left gap-5">
         <div class="mb-4">
-            <div #title class="title text-6xl sm:text-7xl font-bold">Assistência técnica <br> de 
-                <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400 font-extrabold">
+            <div #title class="title text-6xl md:text-7xl font-bold">
+                Assistência técnica <br> de 
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-900 to-blue-500 font-extrabold">
                     eletrônicos em geral
                 </span>
             </div>
         </div>
 
-        <div class="flex flex-col md:flex-row gap-4">
-            <div class="md:w-1/2 z-10 rounded-2xl overflow-hidden">
-                <div 
-                    style="height: 300px"
-                    leaflet
-                    [leafletOptions]="options"
-                    [leafletLayers]="[marker]"
-                ></div>
-            </div>
+        <div #map class="lg:w-1/2 rounded-2xl relative overflow-hidden">
+            <div class="z-10" style="height: 420px" leaflet [leafletOptions]="options" [leafletLayers]="[marker]"></div>
         </div>
     </div>
 </main>
 
-<section class="container mx-auto px-4 md:px-6 lines-background" style="background-image: url('assets/img/bg-lines.png')">
-    <div class="flex flex-col md:flex-row justify-center items-center gap-6">
-        <div #text id="text" class="flex flex-col gap-1 md:w-1/2 self-center text-center">
-            <h1 class="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-purple-500 font-extrabold">
-                <span class="text-5xl">Análise Rápida</span> e <span class="text-5xl">Gratuita</span>
-            </h1>
-            <h1 class="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-500 font-extrabold">
-                <span class="text-5xl">+10 anos</span> no mercado
-            </h1>
-            <h1 class="bg-clip-text text-transparent bg-gradient-to-r from-green-500 to-yellow-500 font-extrabold">
-                <span class="text-5xl">Garantia</span> de <span class="text-5xl">Qualidade</span>
-            </h1>
+
+<div class="h-80 lines-background" style="background-image: url('assets/img/bg-lines.png')"></div>
+
+
+<div class="bg-zinc-800 main-background" style="background-image: url('assets/img/bg-lines-white.png')">
+    <section class="glass-effect pt-28 pb-40">
+        <div class="container mx-auto">
+            <div class="flex flex-col justify-center">
+                <div class="flex flex-col lg:flex-row text-center items-center justify-evenly">
+                    <div class="flex flex-col items-center">
+                        <img class="w-48 lg:w-80 icon-section" src="assets/img/personal.png" alt="">
+                        <h1 class="bg-clip-text text-transparent bg-gradient-to-b from-white to-teal-300 font-extrabold">
+                            <span class="text-5xl xl:text-6xl">Análise Rápida</span> <br> e <span class="text-5xl xl:text-6xl">Gratuita</span>
+                        </h1>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img class="w-48 lg:w-80 icon-section" src="assets/img/time.png" alt="">
+                        <h1 class="bg-clip-text text-transparent bg-gradient-to-b from-white to-red-300 font-extrabold">
+                            <span class="text-6xl xl:text-7xl">+20 anos</span> <br> no mercado
+                        </h1>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img class="w-48 lg:w-80 icon-section" src="assets/img/security.png" alt="">
+                        <h1 class="bg-clip-text text-transparent bg-gradient-to-b from-white to-green-300 font-extrabold">
+                            <span class="text-6xl xl:text-6xl">Garantia</span> de <br> <span class="text-6xl xl:text-6xl">Qualidade</span>
+                        </h1>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="md:w-3/4 relative">
-            <div class="overflow-hidden">
-                <img #image id="image" class="img-fluid rounded-3xl" src="/assets/img/img-hero.jpg" alt="">
+    </section>
+</div>
+
+
+<div #horario class="bg-black">
+    <div class="container mx-auto px-6 pt-8 relative overflow-hidden pb-40">
+        <div class="relative z-50">
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-neutral-100 mt-0 mb-3">Horário de funcionamento</h1>
+            <div class="flex flex-col gap-1 text-lg text-neutral-300 horario-descricao">
+                <div>
+                    <strong>Segunda</strong> à 
+                    <strong>Sexta</strong> das 
+                    <span>07h</span> até as 
+                    <span>17h</span>
+                </div>
+                <div>
+                    <strong>Sábado</strong> das 
+                    <span>07h</span> até as 
+                    <span>12h</span>
+                </div>
             </div>
-            <div #horario id="horario" class="absolute lg:-bottom-20 -bottom-28 lg:-left-28 -left-0">
-                <p-card styleClass="glass-effect px-4 py-3">
-                    <p class="text-3xl font-bold text-blue-600 mt-0 mb-4">Horário de funcionamento</p>
-                    <div class="mb-2"><strong>Segunda</strong> a <strong>Sexta</strong> das 07h até as 17h</div>
-                    <div><strong>Sábado</strong> das 07h até as 12h</div>
-                </p-card>
-            </div>
+        </div>
+    
+        <div class="absolute right-5 z-0 bottom-0 opacity-20">
+            <img class="w-48 md:w-96" src="assets/img/logo-gray-eletron.png" alt="">
         </div>
     </div>
-</section>
+</div>
 
-<div class="h-96 lines-background" style="background-image: url('assets/img/bg-lines.png')"></div>
 
 <div class="fixed z-50 bottom-10 md:bottom-20 right-10 md:right-20">
     <p-button icon="pi pi-whatsapp" [rounded]="true" severity="success" size="large" />

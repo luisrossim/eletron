@@ -16,10 +16,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 })
 export class HomeComponent implements OnInit, AfterViewInit  {
   @ViewChild('title') title!: ElementRef<HTMLDivElement>
-  @ViewChild('main') main!: ElementRef<HTMLDivElement>
-  @ViewChild('image') image!: ElementRef<HTMLDivElement>
-  @ViewChild('text') text!: ElementRef<HTMLDivElement>
-  @ViewChild('horario') horario!: ElementRef<HTMLDivElement>
+  @ViewChild('map') map!: ElementRef<HTMLDivElement>
 
   customIcon = icon({
     iconUrl: 'assets/img/logo-eletron.png',
@@ -61,7 +58,7 @@ export class HomeComponent implements OnInit, AfterViewInit  {
   ngOnInit() {
     setTimeout(() => {
       this.marker.openPopup();
-    }, 1500); 
+    }, 1200); 
   }
 
   ngAfterViewInit(){
@@ -69,31 +66,7 @@ export class HomeComponent implements OnInit, AfterViewInit  {
     gsap.from(this.title.nativeElement, {x: "-50px", opacity: 0})
     gsap.to(this.title.nativeElement, {x: "0px", opacity: 1, ease:'power4.out', duration: 2})
 
-    gsap.to([
-      this.image.nativeElement, 
-      this.text.nativeElement
-    ],{
-      opacity: 1,
-      x: 0,
-      ease: 'power4.out',
-      duration: 2,
-      scrollTrigger: {
-        trigger: this.main.nativeElement,
-        start: "top 90%",
-        end: 'bottom center'
-      }
-    });
-
-    gsap.to(this.horario.nativeElement, {
-      opacity: 1,
-      y: 0,
-      ease: 'power4.out',
-      duration: 1,
-      scrollTrigger: {
-        trigger: this.main.nativeElement,
-        start: "top 50%",
-        end: 'bottom center'
-      }
-    });
+    gsap.from(this.map.nativeElement, {scale: 0.7, opacity: 0})
+    gsap.to(this.map.nativeElement, {scale: 1, opacity: 1, ease:'power4.out', duration: 2})
   }
 }
