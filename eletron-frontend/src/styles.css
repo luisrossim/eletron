@@ -66,17 +66,3 @@ body, .p-toast {
     max-width: 100%;
     height: auto;
 }
-
-.from-blue-500, .to-teal-400, .from-purple-500, 
-.from-green-500, .from-black, .to-black, 
-.from-blue-900, .from-white, .to-white, .to-zinc-900, .to-zinc-800 {
-    --tw-gradient-from-position: ;
-    --tw-gradient-via-position: ;
-    --tw-gradient-to-position: ;
-}
-
-.glass-effect {
-    background: #ffffff0e;
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-}

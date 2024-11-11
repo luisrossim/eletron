@@ -4,7 +4,7 @@ main .title {
 
 .icon-section {
     opacity: 1;
-    filter: saturate(30%);
+    filter: saturate(0%);
     transform: translateY(50px);
 }
 
@@ -22,6 +22,20 @@ main .title {
 
 .horario-descricao div span, .horario-descricao div strong {
     font-size: 20px;
+}
+
+.from-blue-500, .to-teal-400, .from-purple-500, 
+.from-green-500, .from-black, .to-black, 
+.from-blue-900, .from-white, .to-white, .to-zinc-900, .to-zinc-800 {
+    --tw-gradient-from-position: ;
+    --tw-gradient-via-position: ;
+    --tw-gradient-to-position: ;
+}
+
+.glass-effect {
+    background: #ffffff0e;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
 }
 
 @media (max-width: 768px) {

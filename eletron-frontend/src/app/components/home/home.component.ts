@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit, AfterViewInit  {
   @ViewChild('map') map!: ElementRef<HTMLDivElement>
 
   customIcon = icon({
-    iconUrl: 'assets/img/logo-eletron.png',
+    iconUrl: 'assets/img/logo-black-eletron.png',
     iconSize: [32, 32],
     iconAnchor: [16, 32],
     popupAnchor: [0, -32] 
