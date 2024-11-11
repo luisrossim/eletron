@@ -1,55 +1,45 @@
+main .title {
+	line-height: 1.1;
+}
+
+.icon-section {
+    opacity: 1;
+    filter: saturate(0%);
+    transform: translateY(50px);
+}
+
 .main-background {
     background-size: cover;
-    background-position: right;
+    background-position: bottom;
     background-repeat: no-repeat; 
 }
 
 .lines-background {
     background-size: cover;
-    background-position: center center;
+    background-position: top;
     background-repeat: no-repeat; 
 }
 
-main .title {
-  line-height: 1.1;
+.horario-descricao div span, .horario-descricao div strong {
+    font-size: 20px;
 }
 
-.custom-button {
-    display: inline-flex;
-    font-size: 13px;
-    align-items: center;
-    border-radius: 24px;
-    cursor: pointer;
-    overflow: hidden;
-    transition: background-color 0.3s, color 0.3s;
-    position: relative;
-    width: 90px;
-    height: 30px;
-  }
-  
-  .button-icon {
-    transition: transform 0.3s cubic-bezier(.81,.33,.23,.74);
-    position: absolute;
-    left: 10px;
-  }
-  
-  .button-text {
-    transition: transform 0.3s cubic-bezier(.81,.33,.23,.74);
-    position: absolute;
-    right: 12px;
-    font-weight: 500;
-  }
-  
-  .custom-button:hover {
-    background-color: #000;
-    color: #fff;
-  }
-  
-  .custom-button:hover .button-icon {
-    transform: translateX(56px);
-  }
-  
-  .custom-button:hover .button-text {
-    transform: translateX(-18px);
-  }
-  
+.from-blue-500, .to-teal-400, .from-purple-500, 
+.from-green-500, .from-black, .to-black, 
+.from-blue-900, .from-white, .to-white, .to-zinc-900, .to-zinc-800 {
+    --tw-gradient-from-position: ;
+    --tw-gradient-via-position: ;
+    --tw-gradient-to-position: ;
+}
+
+.glass-effect {
+    background: #ffffff0e;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+@media (max-width: 768px) {
+    .horario-descricao div span, .horario-descricao div strong {
+        font-size: 16px;
+    }
+}

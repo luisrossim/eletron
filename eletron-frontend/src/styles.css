@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap');
 @import "primeng/resources/themes/aura-light-noir/theme.css";
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
@@ -24,17 +24,23 @@
     }
 
     .p-button.p-button-lg {
-        padding: 35px;
+        padding: 28px;
     }
 
     .p-button.p-button-lg .p-button-icon {
-        font-size: 36px;
+        font-size: 28px;
+    }
+
+    .login-password .p-inputtext {
+        border-radius: 0;
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
     }
 }
 
 html { 
     scroll-behavior: smooth;
-    font-size: 15px;
+    font-size: 14px;
 }
 
 body { 
@@ -42,27 +48,21 @@ body {
 }
 
 @font-face {
-    font-family: 'Montserrat', sans-serif !important; 
+    font-family: 'Funnel Display', sans-serif !important; 
     font-named-instance:"Regular" !important;
-    src: url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap') !important;
+    src: url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap') !important;
 }
 
 :root {
-    font-family: 'Montserrat', sans-serif !important; 
-    --font-family: "Montserrat", sans-serif !important;
+    font-family: 'Funnel Display', sans-serif !important; 
+    --font-family: "Funnel Display", sans-serif !important;
 }
 
 body, .p-toast { 
-    font-family: 'Montserrat', sans-serif !important; 
+    font-family: 'Funnel Display', sans-serif !important; 
 }
 
 .img-fluid {
     max-width: 100%;
     height: auto;
-}
-
-.from-blue-500, .to-purple-500 {
-    --tw-gradient-from-position: ;
-    --tw-gradient-via-position: ;
-    --tw-gradient-to-position: ;
 }
