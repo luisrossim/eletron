@@ -18,14 +18,14 @@
     </div>
 </header>
 
-<main class="container mx-auto py-4 my-5 md:my-7 px-4 md:px-6 main-background" style="background-image: url('assets/img/bg-logo-eletron.png')">
+<main #main class="container mx-auto py-4 my-5 md:my-7 px-4 md:px-6 main-background" style="background-image: url('assets/img/bg-logo-eletron.png')">
     <div class="flex flex-col text-center md:text-left gap-5">
         <div class="mb-4">
-            <span class="title text-6xl sm:text-7xl font-bold">Assistência técnica <br> de 
+            <div #title class="title text-6xl sm:text-7xl font-bold">Assistência técnica <br> de 
                 <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400 font-extrabold">
                     eletrônicos em geral
                 </span>
-            </span>
+            </div>
         </div>
 
         <div class="flex flex-col md:flex-row gap-4">
@@ -41,9 +41,9 @@
     </div>
 </main>
 
-<div class="container mx-auto px-4 md:px-6 lines-background" style="background-image: url('assets/img/bg-lines.png')">
+<section class="container mx-auto px-4 md:px-6 lines-background" style="background-image: url('assets/img/bg-lines.png')">
     <div class="flex flex-col md:flex-row justify-center items-center gap-6">
-        <div class="flex flex-col gap-1 w-1/2 self-center text-center">
+        <div #text id="text" class="flex flex-col gap-1 md:w-1/2 self-center text-center">
             <h1 class="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-purple-500 font-extrabold">
                 <span class="text-5xl">Análise Rápida</span> e <span class="text-5xl">Gratuita</span>
             </h1>
@@ -55,8 +55,10 @@
             </h1>
         </div>
         <div class="md:w-3/4 relative">
-            <img class="img-fluid rounded-2xl" src="/assets/img/img-hero.jpg" alt="">
-            <div class="absolute -bottom-20 lg:-left-28 -left-0">
+            <div class="overflow-hidden">
+                <img #image id="image" class="img-fluid rounded-3xl" src="/assets/img/img-hero.jpg" alt="">
+            </div>
+            <div #horario id="horario" class="absolute lg:-bottom-20 -bottom-28 lg:-left-28 -left-0">
                 <p-card styleClass="glass-effect px-4 py-3">
                     <p class="text-3xl font-bold text-blue-600 mt-0 mb-4">Horário de funcionamento</p>
                     <div class="mb-2"><strong>Segunda</strong> a <strong>Sexta</strong> das 07h até as 17h</div>
@@ -65,7 +67,7 @@
             </div>
         </div>
     </div>
-</div>
+</section>
 
 <div class="h-96 lines-background" style="background-image: url('assets/img/bg-lines.png')"></div>
 

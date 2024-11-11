@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { latLng, marker, tileLayer, icon } from 'leaflet';
 import { RouterModule } from '@angular/router';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +14,13 @@ import { RouterModule } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit  {
+  @ViewChild('title') title!: ElementRef<HTMLDivElement>
+  @ViewChild('main') main!: ElementRef<HTMLDivElement>
+  @ViewChild('image') image!: ElementRef<HTMLDivElement>
+  @ViewChild('text') text!: ElementRef<HTMLDivElement>
+  @ViewChild('horario') horario!: ElementRef<HTMLDivElement>
+
   customIcon = icon({
     iconUrl: 'assets/img/logo-eletron.png',
     iconSize: [32, 32],
@@ -54,5 +62,38 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
       this.marker.openPopup();
     }, 1500); 
+  }
+
+  ngAfterViewInit(){
+    gsap.registerPlugin(ScrollTrigger)
+    gsap.from(this.title.nativeElement, {x: "-50px", opacity: 0})
+    gsap.to(this.title.nativeElement, {x: "0px", opacity: 1, ease:'power4.out', duration: 2})
+
+    gsap.to([
+      this.image.nativeElement, 
+      this.text.nativeElement
+    ],{
+      opacity: 1,
+      x: 0,
+      ease: 'power4.out',
+      duration: 2,
+      scrollTrigger: {
+        trigger: this.main.nativeElement,
+        start: "top 90%",
+        end: 'bottom center'
+      }
+    });
+
+    gsap.to(this.horario.nativeElement, {
+      opacity: 1,
+      y: 0,
+      ease: 'power4.out',
+      duration: 1,
+      scrollTrigger: {
+        trigger: this.main.nativeElement,
+        start: "top 50%",
+        end: 'bottom center'
+      }
+    });
   }
 }

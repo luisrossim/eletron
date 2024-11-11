@@ -13,3 +13,18 @@
 main .title {
 	line-height: 1.1;
 }
+
+#image {
+    opacity: 0;
+    transform: translateX(100px);
+}
+
+#text {
+    opacity: 0;
+    transform: translateX(-100px);
+}
+
+#horario {
+    opacity: 0;
+    transform: translateY(-50px);
+}

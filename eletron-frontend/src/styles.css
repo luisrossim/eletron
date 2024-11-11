@@ -30,6 +30,12 @@
     .p-button.p-button-lg .p-button-icon {
         font-size: 28px;
     }
+
+    .login-password .p-inputtext {
+        border-radius: 0;
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+    }
 }
 
 html { 
