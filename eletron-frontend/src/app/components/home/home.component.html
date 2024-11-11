@@ -1,59 +1,73 @@
-<header #header class="bg-white">
-    <div class="container mx-auto flex flex-col md:flex-row justify-between gap-4 md:gap-1 py-6 px-4">
-        <div class="flex items-center flex-col md:flex-row gap-4 py-2 md:py-0">
-            <img width="40px" class="img-fluid" src="assets/img/logo-eletron.png" alt="eletron-logo">
+<header #header class="shadow-lg shadow-zinc-100">
+    <div class="container mx-auto flex flex-col md:flex-row justify-between gap-5 py-5 px-4 md:px-6">
+        <div class="flex items-center flex-col md:flex-row gap-3">
+            <img width="35px" class="img-fluid" src="assets/img/logo-eletron.png" alt="eletron-logo">
             <div class="flex flex-col gap-2 md:gap-1 text-center md:text-left">
-                <span class="text-xl font-medium">Eletrônica do Luis</span>
-                <div class="flex gap-4 text-slate-600 text-xs md:text-sm">
-                    <span><i class="pi pi-map-marker text-xs mr-1"></i>Nova Venécia-ES</span>
-                    <span><i class="pi pi-whatsapp text-xs mr-1"></i>(27) 99969-2465</span>
+                <span class="text-xl font-semibold">ELETRÔNICA DO LUIS</span>
+                <div class="flex gap-4 text-slate-500" style="font-size: 14px">
+                    <span><i class="pi pi-map-marker text-xs md:text-sm mr-2"></i>Nova Venécia-ES</span>
+                    <span><i class="pi pi-whatsapp text-xs md:text-sm mr-2"></i>(27) 99969-2465</span>
                 </div>
             </div>
         </div>
         <div class="flex justify-center items-center">
-            <a routerLink="/sistema" class="custom-button text-neutral-600 border-1 border-neutral-600">
-                <i class="fa-solid fa-arrow-right button-icon"></i>
-                <small class="button-text">SISTEMA</small>
+            <a routerLink="/sistema">
+                <p-button icon="pi pi-search" [rounded]="true" label="Consultar serviço"></p-button>
             </a>
         </div>
     </div>
 </header>
 
-<main class="container h-screen mx-auto mt-2 p-4 main-background" style="background-image: url('assets/img/bg-logo-eletron.png')">
+<main class="container mx-auto py-4 my-5 md:my-7 px-4 md:px-6 main-background" style="background-image: url('assets/img/bg-logo-eletron.png')">
     <div class="flex flex-col text-center md:text-left gap-5">
-        <div class="mb-6">
-            <span class="title text-5xl sm:text-6xl font-medium">Assistência técnica <br> de 
-                <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500 font-semibold">
+        <div class="mb-4">
+            <span class="title text-6xl sm:text-7xl font-bold">Assistência técnica <br> de 
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400 font-extrabold">
                     eletrônicos em geral
                 </span>
             </span>
         </div>
 
-        <div class="md:w-1/2 z-10 rounded-2xl overflow-hidden">
-            <div 
-                style="height: 300px"
-                leaflet
-                [leafletOptions]="options"
-                [leafletLayers]="[marker]"
-            ></div>
-            <!-- <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d18599.93427791785!2d-40.4013411!3d-18.707284!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb5db42e8029599%3A0x3edcf99222fca05a!2sEletr%C3%B4nica%20do%20Luis!5e1!3m2!1spt-BR!2sbr!4v1731246607609!5m2!1spt-BR!2sbr"
-                width="100%" 
-                height="450" 
-                style="border:0" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe> -->
-        </div>
-
-        <div>
-            <a href="#section1">Seção 1</a>
+        <div class="flex flex-col md:flex-row gap-4">
+            <div class="md:w-1/2 z-10 rounded-2xl overflow-hidden">
+                <div 
+                    style="height: 300px"
+                    leaflet
+                    [leafletOptions]="options"
+                    [leafletLayers]="[marker]"
+                ></div>
+            </div>
         </div>
     </div>
 </main>
 
-<div id="section1" class="h-screen lines-background" style="background-image: url('assets/img/bg-lines.png')"></div>
+<div class="container mx-auto px-4 md:px-6 lines-background" style="background-image: url('assets/img/bg-lines.png')">
+    <div class="flex flex-col md:flex-row justify-center items-center gap-6">
+        <div class="flex flex-col gap-1 w-1/2 self-center text-center">
+            <h1 class="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-purple-500 font-extrabold">
+                <span class="text-5xl">Análise Rápida</span> e <span class="text-5xl">Gratuita</span>
+            </h1>
+            <h1 class="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-500 font-extrabold">
+                <span class="text-5xl">+10 anos</span> no mercado
+            </h1>
+            <h1 class="bg-clip-text text-transparent bg-gradient-to-r from-green-500 to-yellow-500 font-extrabold">
+                <span class="text-5xl">Garantia</span> de <span class="text-5xl">Qualidade</span>
+            </h1>
+        </div>
+        <div class="md:w-3/4 relative">
+            <img class="img-fluid rounded-2xl" src="/assets/img/img-hero.jpg" alt="">
+            <div class="absolute -bottom-20 lg:-left-28 -left-0">
+                <p-card styleClass="glass-effect px-4 py-3">
+                    <p class="text-3xl font-bold text-blue-600 mt-0 mb-4">Horário de funcionamento</p>
+                    <div class="mb-2"><strong>Segunda</strong> a <strong>Sexta</strong> das 07h até as 17h</div>
+                    <div><strong>Sábado</strong> das 07h até as 12h</div>
+                </p-card>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="h-96 lines-background" style="background-image: url('assets/img/bg-lines.png')"></div>
 
 <div class="fixed z-50 bottom-10 md:bottom-20 right-10 md:right-20">
     <p-button icon="pi pi-whatsapp" [rounded]="true" severity="success" size="large" />

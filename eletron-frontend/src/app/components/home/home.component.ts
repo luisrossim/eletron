@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
 
   marker = marker([-18.707342062096952, -40.401385467076366], { icon: this.customIcon }).bindPopup(
     `<div class="popup-content">
-      <h4 class="mb-1">Eletrônica do Luis</h4>
+      <h3 class="mb-1">Eletrônica do Luis</h3>
       <p class="flex text-yellow-400 mt-0 mb-2 gap-1">
         <span class="mr-1">4,6</span>
         <i class="pi pi-star-fill"></i>
