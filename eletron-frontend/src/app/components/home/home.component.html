@@ -1,76 +1,55 @@
 <header #header class="shadow-lg shadow-zinc-100">
-    <div class="container mx-auto flex flex-col md:flex-row justify-between gap-5 py-5 px-4 md:px-6">
-        <div class="flex items-center flex-col md:flex-row gap-3">
+    <div class="container mx-auto py-4 px-5 md:px-6">
+        <div class="flex items-center justify-start gap-3">
             <img width="35px" class="img-fluid" src="assets/img/logo-black-eletron.png" alt="eletron-logo">
-            <div class="flex flex-col gap-2 md:gap-1 text-center md:text-left">
+            <div class="flex flex-col md:gap-1 text-left">
                 <span class="text-xl font-semibold">ELETRÔNICA DO LUIS</span>
-                <div class="flex gap-4 text-slate-500" style="font-size: 14px">
-                    <span><i class="pi pi-map-marker text-xs md:text-sm mr-2"></i>Nova Venécia-ES</span>
-                    <span><i class="pi pi-whatsapp text-xs md:text-sm mr-2"></i>(27) 99969-2465</span>
+                <div class="flex gap-3 text-slate-500" style="font-size: 14px">
+                    <span class="separator">(27) 99969-2465</span>
+                    <span>Nova Venécia-ES</span>
                 </div>
             </div>
-        </div>
-        <div class="flex justify-center items-center">
-            <a routerLink="/sistema">
-                <p-button icon="pi pi-search" [rounded]="true" label="Consultar serviço"></p-button>
-            </a>
         </div>
     </div>
 </header>
 
-
-<main #main class="container mx-auto py-4 my-5 md:my-8 px-4 md:px-6 main-background" style="background-image: url('assets/img/bg-logo-eletron.png')">
+<main #main class="container mx-auto py-4 my-4 md:my-6 px-4 md:px-6 main-background" style="background-image: url('assets/img/bg-logo-eletron.png')">
     <div class="flex flex-col text-center md:text-left gap-5">
-        <div class="mb-4">
-            <div #title class="title text-6xl md:text-7xl font-bold">
-                Assistência técnica <br> de 
-                <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-900 to-blue-500 font-extrabold">
-                    eletrônicos em geral
-                </span>
-            </div>
+        <div #title class="title text-5xl md:text-7xl font-extrabold">
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-black to-emerald-700">
+                Assistência técnica <br> de
+            </span>
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-black">
+                eletrônicos em geral
+            </span>
+        </div>
+
+        <div class="flex md:justify-start justify-center items-center mb-6">
+            <a routerLink="/sistema"><p-button icon="pi pi-search" [rounded]="true" label="Consultar serviço"></p-button></a>
         </div>
 
         <div #map class="lg:w-1/2 rounded-2xl relative overflow-hidden">
-            <div class="z-10" style="height: 300px" leaflet [leafletOptions]="options" [leafletLayers]="[marker]"></div>
+            <div 
+                leaflet 
+                [leafletOptions]="options" 
+                [leafletLayers]="[marker]"
+                class="z-10" style="height: 300px" 
+            ></div>
         </div>
     </div>
 </main>
 
+<section class="container mx-auto mt-20 mb-20 lg:mb-0 px-4 md:px-6">
+    <div class="grid grid-cols-3 text-center container-info">
+        <div class="px-4 py-1 info separator text-xs md:text-lg">Análise Rápida e Gratuita</div>
+        <div class="px-4 py-1 info separator text-xs md:text-lg">Pós-Atendimento e Suporte pelo WhatsApp</div>
+        <div class="px-4 py-1 info text-xs md:text-lg">Garantia de Qualidade</div>
+      </div>
+</section>
 
 <div class="h-64 hidden lg:block lines-background" style="background-image: url('assets/img/bg-lines.png')"></div>
 
-
-<div class="bg-black main-background" style="background-image: url('assets/img/bg-blue.png')">
-    <section class="pt-28 pb-40">
-        <div class="container mx-auto">
-            <div class="flex flex-col justify-center">
-                <div class="flex flex-col lg:flex-row text-center items-center justify-evenly">
-                    <div class="flex flex-col items-center">
-                        <img class="w-48 lg:w-80 icon-section" src="assets/img/personal.png" alt="">
-                        <h1 class="bg-clip-text text-transparent bg-gradient-to-b from-white to-zinc-400 font-extrabold">
-                            <span class="text-5xl xl:text-6xl">Análise Rápida</span> <br> e <span class="text-5xl xl:text-6xl">Gratuita</span>
-                        </h1>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <img class="w-48 lg:w-80 icon-section" src="assets/img/time.png" alt="">
-                        <h1 class="bg-clip-text text-transparent bg-gradient-to-b from-white to-zinc-400 font-extrabold">
-                            <span class="text-6xl xl:text-7xl">+20 anos</span> <br> no mercado
-                        </h1>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <img class="w-48 lg:w-80 icon-section" src="assets/img/security.png" alt="">
-                        <h1 class="bg-clip-text text-transparent bg-gradient-to-b from-white to-zinc-400 font-extrabold">
-                            <span class="text-6xl xl:text-6xl">Garantia</span> de <br> <span class="text-6xl xl:text-6xl">Qualidade</span>
-                        </h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
-
-
-<div #horario class="bg-black">
+<div #horario class="bg-black main-background" style="background-image: url('assets/img/bg-lines-white.png')">
     <div class="container mx-auto px-6 py-8 relative overflow-hidden">
         <div class="relative z-50">
             <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-neutral-100 mt-0 mb-3">Horário de funcionamento</h1>

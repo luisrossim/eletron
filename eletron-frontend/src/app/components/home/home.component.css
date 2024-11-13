@@ -3,9 +3,7 @@ main .title {
 }
 
 .icon-section {
-    opacity: 1;
     filter: saturate(0%);
-    transform: translateY(50px);
 }
 
 .main-background {
@@ -33,9 +31,29 @@ main .title {
 }
 
 .glass-effect {
-    background: #ffffff0e;
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
+    background: #00000000;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.separator {
+    padding-right: 0.9rem;
+    border-right: 1px solid #e0e0e0;
+}
+
+.container-info {
+    border-radius: 8px;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0rem;
+    font-weight: bold;
+    color: rgb(54, 54, 54);
 }
 
 @media (max-width: 768px) {
