@@ -7,7 +7,7 @@ import { ToastService } from '../../utils/services/toast.service';
 export const authInterceptor: HttpInterceptorFn = (req: HttpRequest<unknown>, next: HttpHandlerFn) => {
   const utilities = inject(UtilitiesService);
   const toastService = inject(ToastService)
-  const token: string = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJlbGV0cm9uLWFwaSIsInN1YiI6Imx1aXNlbGV0cm8iLCJleHAiOjE3MzExMjM1Mzl9.4r_biTVDid2SiOmtUc7XHK841mtSmoXTuJmkxXZvlgQ';
+  const token: string = '';
   utilities.setLoading(true);
 
   if (token && token != '') {

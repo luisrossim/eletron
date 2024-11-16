@@ -2,15 +2,8 @@
 
 @if (loading) { 
     <div class="progress-container">
-        <p-progressBar 
-            mode="indeterminate" 
-            [style]="{'height': '4px', 'border-radius': '0px'}" 
-        /> 
+        <p-progressBar mode="indeterminate" [style]="{'height': '4px', 'border-radius': '0px'}" /> 
     </div>
 }
 
-<div>
-    <app-nav></app-nav>
-    <router-outlet></router-outlet>
-    <app-footer></app-footer>
-</div>
+<router-outlet></router-outlet>

@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap');
 @import "primeng/resources/themes/aura-light-noir/theme.css";
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
@@ -48,18 +47,23 @@ body {
 }
 
 @font-face {
-    font-family: 'Funnel Display', sans-serif !important; 
-    font-named-instance:"Regular" !important;
-    src: url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap') !important;
+    font-family: 'Inter', sans-serif !important; 
+    font-named-instance: "Regular" !important;
+    src: url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap') !important;
 }
 
 :root {
-    font-family: 'Funnel Display', sans-serif !important; 
-    --font-family: "Funnel Display", sans-serif !important;
+    font-family: 'Inter', sans-serif !important; 
+    --font-family: "Inter", sans-serif !important;
 }
 
 body, .p-toast { 
-    font-family: 'Funnel Display', sans-serif !important; 
+    font-family: 'Inter', sans-serif !important; 
+    /* background-color: #f9f9f9;
+    background-image: radial-gradient(circle, #dadada 1px, #0000 0);
+    background-size: 36px 36px;
+    color: var(--secundario);
+    overscroll-behavior-y: contain; */
 }
 
 .img-fluid {

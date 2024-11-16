@@ -1,0 +1,15 @@
+.main-background {
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat; 
+}
+
+.horario-descricao div span, .horario-descricao div strong {
+    font-size: 20px;
+}
+
+@media (max-width: 768px) {
+    .horario-descricao div span, .horario-descricao div strong {
+        font-size: 16px;
+    }
+}

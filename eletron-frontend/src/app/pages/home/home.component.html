@@ -1,0 +1,41 @@
+@if (reformadosCount > 0){
+    <div class="bg-sky-700 text-white text-center py-2 px-6">
+        Reformados disponíveis para venda! 
+        <a class="text-white font-bold no-underline" href="#reformados">Confira!</a>
+    </div>
+}
+
+<app-header></app-header>
+
+<main #main class="container mx-auto py-4 my-4 md:my-6 px-4 md:px-6 main-background" style="background-image: url('assets/img/bg-logo-eletron.png')">
+    <div class="flex flex-col text-center md:text-left gap-5">
+        <div #title class="title text-4xl md:text-7xl font-semibold">
+            Assistência técnica <br> de eletrônicos em geral
+        </div>
+
+        <div class="flex md:justify-start justify-center items-center mb-7">
+            <a routerLink="/status">
+                <p-button icon="pi pi-search" size="small" [rounded]="true" label="Consultar serviço"></p-button>
+            </a>
+        </div>
+
+        <div #map class="lg:w-1/2 rounded-2xl relative overflow-hidden">
+            <div 
+                leaflet 
+                [leafletOptions]="options" 
+                [leafletLayers]="[marker]"
+                class="z-10" style="height: 260px" 
+            ></div>
+        </div>
+
+        <app-reformado-list></app-reformado-list>
+    </div>
+</main>
+
+<div class="h-48 hidden lg:block lines-background" style="background-image: url('assets/img/bg-lines.png')"></div>
+
+<div class="fixed z-50 bottom-10 md:bottom-20 right-10 md:right-20">
+    <p-button icon="pi pi-whatsapp" [rounded]="true" severity="success" size="large" />
+</div>
+
+<app-footer></app-footer>
