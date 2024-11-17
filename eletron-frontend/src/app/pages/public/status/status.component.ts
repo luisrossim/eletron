@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HeaderComponent } from "../../components/header/header.component";
-import { FooterComponent } from "../../components/footer/footer.component";
+import { HeaderComponent } from "../../../components/header/header.component";
+import { FooterComponent } from "../../../components/footer/footer.component";
 import { InputIconModule } from 'primeng/inputicon';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputTextModule } from 'primeng/inputtext';
@@ -8,7 +8,7 @@ import { ButtonModule } from 'primeng/button';
 import { MenuItem } from 'primeng/api';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { DividerModule } from 'primeng/divider';
-import { ReformadoListComponent } from "../../components/reformado-list/reformado-list.component";
+import { ReformadoListComponent } from "../../../components/reformado-list/reformado-list.component";
 
 @Component({
   selector: 'app-status',

@@ -6,6 +6,7 @@ import com.rossim.eletron.DTO.RegisterDTO;
 import com.rossim.eletron.Config.Security.TokenService;
 import com.rossim.eletron.Model.Usuario;
 import com.rossim.eletron.Repository.UsuarioRepository;
+import org.springframework.security.core.userdetails.UserDetails;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,14 +38,17 @@ public class AuthenticationController {
     public ResponseEntity<?> login(@RequestBody @Valid AuthDTO data) {
         try {
             var usernamePassword = new UsernamePasswordAuthenticationToken(data.login(), data.password());
-
             var auth = this.authenticationManager.authenticate(usernamePassword);
             var token = tokenService.generateToken((Usuario) auth.getPrincipal());
 
-            return ResponseEntity.ok(new LoginResponseDTO(token));
-        } catch (BadCredentialsException e) {
+            UserDetails usuario = usuarioRepository.findByLogin(data.login());
+
+            return ResponseEntity.ok(new LoginResponseDTO(usuario, token));
+        }
+        catch (BadCredentialsException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Credenciais incorretas");
-        } catch (AuthenticationException e) {
+        }
+        catch (AuthenticationException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Falha na autenticação");
         }
     }

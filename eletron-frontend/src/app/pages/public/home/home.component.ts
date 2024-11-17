@@ -1,15 +1,15 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
-import { HeaderComponent } from "../../components/header/header.component";
-import { FooterComponent } from "../../components/footer/footer.component";
+import { HeaderComponent } from "../../../components/header/header.component";
+import { FooterComponent } from "../../../components/footer/footer.component";
 import { CardModule } from 'primeng/card';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { latLng, marker, tileLayer, icon } from 'leaflet';
 import { RouterModule } from '@angular/router';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ReformadoListComponent } from "../../components/reformado-list/reformado-list.component";
-import { ReformadoService } from '../../core/services/reformado.service';
+import { ReformadoListComponent } from "../../../components/reformado-list/reformado-list.component";
+import { ReformadoService } from '../../../core/services/reformado.service';
 
 
 @Component({

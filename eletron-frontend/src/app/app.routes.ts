@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { LoginComponent } from './pages/login/login.component';
-import { PainelComponent } from './pages/painel/painel.component';
-import { StatusComponent } from './pages/status/status.component';
+import { HomeComponent } from './pages/public/home/home.component';
+import { LoginComponent } from './pages/public/login/login.component';
+import { PainelComponent } from './pages/private/painel/painel.component';
+import { StatusComponent } from './pages/public/status/status.component';
 
 export const routes: Routes = [
     {
