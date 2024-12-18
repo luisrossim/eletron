@@ -5,13 +5,11 @@ import { ToastModule } from "primeng/toast";
 import { ToastService } from "./utils/services/toast.service";
 import { MessageService } from "primeng/api";
 import { UtilitiesService } from './utils/services/utilities.service';
-import { NavComponent } from './layout/nav/nav.component';
-import { FooterComponent } from './layout/footer/footer.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ProgressBarModule, ToastModule, NavComponent, FooterComponent],
+  imports: [RouterOutlet, ProgressBarModule, ToastModule],
   providers: [MessageService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
@@ -35,7 +33,7 @@ export class AppComponent implements OnInit, AfterContentChecked {
   }
 
   private listenToastService() {
-    this.toastService.sendSub.subscribe({
+    this.toastService.send$.subscribe({
       next: newMessage => {
         if(newMessage && newMessage.summary !== this.toastService.INIT_STATE) {
           this.messageService.add(newMessage);

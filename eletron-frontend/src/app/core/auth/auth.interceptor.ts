@@ -1,18 +1,21 @@
 import { HttpErrorResponse, HttpHandlerFn, HttpInterceptorFn, HttpRequest } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { UtilitiesService } from '../../utils/services/utilities.service';
-import { catchError, finalize, Observable, tap } from 'rxjs';
+import { tap } from 'rxjs';
 import { ToastService } from '../../utils/services/toast.service';
+import { AuthService } from '../services/auth.service';
 
 export const authInterceptor: HttpInterceptorFn = (req: HttpRequest<unknown>, next: HttpHandlerFn) => {
   const utilities = inject(UtilitiesService);
   const toastService = inject(ToastService)
-  const token: string = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJlbGV0cm9uLWFwaSIsInN1YiI6Imx1aXNlbGV0cm8iLCJleHAiOjE3MzExMjM1Mzl9.4r_biTVDid2SiOmtUc7XHK841mtSmoXTuJmkxXZvlgQ';
+  const authService = inject(AuthService)
+
+  const usuario = authService.getUserFromCookie();
   utilities.setLoading(true);
 
-  if (token && token != '') {
+  if (usuario) {
     req = req.clone({
-      setHeaders: { Authorization: `Bearer ${token}` }
+      setHeaders: { Authorization: `Bearer ${usuario.token}` }
     });
   }
 

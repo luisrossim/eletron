@@ -1,7 +1,9 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
-import { PainelComponent } from './components/painel/painel.component';
+import { HomeComponent } from './pages/public/home/home.component';
+import { LoginComponent } from './pages/public/login/login.component';
+import { PainelComponent } from './pages/private/painel/painel.component';
+import { StatusComponent } from './pages/public/status/status.component';
+import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
     {
@@ -9,10 +11,14 @@ export const routes: Routes = [
         component: HomeComponent
     },
     {
+        path: 'status',
+        component: StatusComponent
+    },
+    {
         path: 'sistema',
         children: [
             { path: '', component: LoginComponent },
-            { path: 'painel', component: PainelComponent }
+            { path: 'painel', canActivate: [authGuard], component: PainelComponent }
         ]
     },
     { path: '**', redirectTo: '', pathMatch: 'full' },

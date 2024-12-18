@@ -1,22 +1,31 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
+import { HeaderComponent } from "../../../components/header/header.component";
+import { FooterComponent } from "../../../components/footer/footer.component";
 import { CardModule } from 'primeng/card';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { latLng, marker, tileLayer, icon } from 'leaflet';
 import { RouterModule } from '@angular/router';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ReformadoListComponent } from "../../../components/reformado-list/reformado-list.component";
+import { ReformadoService } from '../../../core/services/reformado.service';
+
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ButtonModule, CardModule, LeafletModule, RouterModule],
+  imports: [ButtonModule, CardModule, LeafletModule, RouterModule, HeaderComponent, FooterComponent, ReformadoListComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit, AfterViewInit  {
   @ViewChild('title') title!: ElementRef<HTMLDivElement>
   @ViewChild('map') map!: ElementRef<HTMLDivElement>
+  @ViewChild('horario') horario!: ElementRef<HTMLDivElement>
+  @ViewChild('reformados') reformados!: ElementRef<HTMLDivElement>
+
+  reformadosCount = 0;
 
   customIcon = icon({
     iconUrl: 'assets/img/logo-black-eletron.png',
@@ -53,13 +62,18 @@ export class HomeComponent implements OnInit, AfterViewInit  {
     </div>`
   );
 
-  constructor(){}
+
+  constructor(private reformadoService: ReformadoService){}
 
   ngOnInit() {
+    this.reformadoService.eletronicosCount$.subscribe(count => {
+      this.reformadosCount = count;
+    });
     setTimeout(() => {
       this.marker.openPopup();
-    }, 1200); 
+    }, 1200);
   }
+
 
   ngAfterViewInit(){
     gsap.registerPlugin(ScrollTrigger)
@@ -68,5 +82,11 @@ export class HomeComponent implements OnInit, AfterViewInit  {
 
     gsap.from(this.map.nativeElement, {scale: 0.7, opacity: 0})
     gsap.to(this.map.nativeElement, {scale: 1, opacity: 1, ease:'power4.out', duration: 2})
+
+    gsap.from(this.horario.nativeElement, {x: "50px", opacity: 0})
+    gsap.to(this.horario.nativeElement, {x: "0px", opacity: 1, ease:'power4.out', duration: 2})
+
+    gsap.from(this.reformados.nativeElement, {opacity: 0})
+    gsap.to(this.reformados.nativeElement, {opacity: 1, ease:'power4.out', duration: 3})
   }
 }

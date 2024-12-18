@@ -1,3 +1,8 @@
 package com.rossim.eletron.DTO;
 
-public record LoginResponseDTO(String token) {}
+import org.springframework.security.core.userdetails.UserDetails;
+
+public record LoginResponseDTO(
+        UserDetails usuario,
+        String token
+) {}

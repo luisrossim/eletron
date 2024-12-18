@@ -1,0 +1,45 @@
+<div id="reformados">
+    <div>
+        <p class="text-center font-semibold text-xl mb-6">
+            Confira os eletrônicos reformados disponíveis para venda!
+        </p>
+        @if(reformados.length > 0){
+            <p-carousel 
+            [value]="reformados" 
+            [numVisible]="3" 
+            [numScroll]="3" 
+            [circular]="false" 
+            [responsiveOptions]="responsiveOptions">
+                <ng-template let-reformados pTemplate="item">
+                    <div class="border-1 surface-border border-round m-2 p-3">
+                        <div class="mb-3">
+                            <div class="relative mx-auto text-center">
+                                <img 
+                                    src="assets/img/tv.png" 
+                                    class="img-fluid w-[150px] border-round" />
+                                <p-tag 
+                                    [value]="reformados.modelo"
+                                    severity="secondary"
+                                    class="absolute" 
+                                    [ngStyle]="{ 'left.px': 5, 'top.px': 5 }" />
+                            </div>
+                        </div>
+                        <div class="mb-3 font-medium">
+                            {{ reformados.tipoAparelho.descricao }} {{ reformados.marca.nome }} {{ reformados.modelo }}
+                        </div>
+                        <div class="flex justify-content-between align-items-center">
+                        <div class="mt-0 font-semibold text-xl">
+                            {{ 'R$' + reformados.valor }}
+                        </div>
+                            <span>
+                                <p-button icon="pi pi-shopping-cart" />
+                            </span>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-carousel>
+        } @else {
+            <p class="text-center text-slate-500">Não há reformados no momento.</p>
+        }
+    </div>
+</div>

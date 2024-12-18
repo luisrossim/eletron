@@ -1,0 +1,31 @@
+<div class="bg-neutral-100">
+    <div class="container h-svh mx-auto p-6">
+        <div class="flex h-full justify-center items-center">
+            <p-card styleClass="w-[340px] md:w-[520px] lg:w-[640px] shadow-lg">
+                <div class="flex items-center main-background" style="background-image: url('assets/img/bg-logo-eletron.png')">
+                    <div class="flex flex-col p-4 gap-2">
+                        <h2 class="my-0">Acessar sistema</h2>
+                        <small class="text-neutral-400 mb-4">eletroluis-sistema-v0.1</small>
+    
+                        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="flex flex-col gap-2">
+                            <p-inputGroup>
+                                <p-inputGroupAddon>
+                                    <i class="pi pi-user"></i>
+                                </p-inputGroupAddon>
+                                <input formControlName="login" pInputText placeholder="Login" />
+                            </p-inputGroup>
+                            <p-inputGroup class="mb-4">
+                                <p-inputGroupAddon>
+                                    <i class="pi pi-lock"></i>
+                                </p-inputGroupAddon>
+                                <p-password formControlName="password" class="login-password" styleClass="w-full" placeholder="Senha" [toggleMask]="true" [feedback]="false" />
+                            </p-inputGroup>
+        
+                            <p-button type="submit" [disabled]="loginForm.invalid" label="Acessar" icon="pi pi-arrow-right" [rounded]="true" />
+                        </form>
+                    </div>
+                </div>
+            </p-card>
+        </div>
+    </div>
+</div>
