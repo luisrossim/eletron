@@ -65,6 +65,6 @@ export class LoginComponent implements OnInit {
     };
 
     this.authService.setUserCookie(userLogged);
-    this.router.navigate(['sistema/painel']);
+    this.router.navigate(['sistema']);
   }
 }

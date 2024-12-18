@@ -27,7 +27,7 @@ export class ReformadoListComponent implements OnInit {
   fetchReformados(){
     this.reformadoService.getAll().subscribe({
       next: (reformados) => (
-        this.reformados = reformados
+        this.reformados = reformados || []
       ),
       error: (error) => { 
         this.toastService.send({

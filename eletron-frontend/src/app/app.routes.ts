@@ -15,10 +15,13 @@ export const routes: Routes = [
         component: StatusComponent
     },
     {
+        path: 'login', component: LoginComponent
+    },
+    {
         path: 'sistema',
+        canActivate: [authGuard],
         children: [
-            { path: '', component: LoginComponent },
-            { path: 'painel', canActivate: [authGuard], component: PainelComponent }
+            { path: '', component: PainelComponent }
         ]
     },
     { path: '**', redirectTo: '', pathMatch: 'full' },

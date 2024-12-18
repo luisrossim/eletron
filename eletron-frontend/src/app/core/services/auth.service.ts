@@ -28,11 +28,11 @@ export class AuthService {
       if (user) {
         this.validateToken().subscribe({
           next: () => {
-            this.router.navigate(['/sistema/painel']);
+            this.router.navigate(['/sistema']);
           },
           error: () => {
             this.removeUserCookies();
-            this.router.navigate(['/sistema']);
+            this.router.navigate(['/login']);
           },
         });
       }
