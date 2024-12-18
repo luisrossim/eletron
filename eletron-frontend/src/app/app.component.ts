@@ -33,7 +33,7 @@ export class AppComponent implements OnInit, AfterContentChecked {
   }
 
   private listenToastService() {
-    this.toastService.sendSub.subscribe({
+    this.toastService.send$.subscribe({
       next: newMessage => {
         if(newMessage && newMessage.summary !== this.toastService.INIT_STATE) {
           this.messageService.add(newMessage);

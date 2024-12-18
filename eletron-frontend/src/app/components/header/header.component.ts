@@ -1,19 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
+import { ReformadoService } from '../../core/services/reformado.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, ButtonModule],
+  imports: [CommonModule, ButtonModule, RouterModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
 export class HeaderComponent implements OnInit {
+  reformadosCount = 0;
 
-    constructor(){}
+  constructor(private reformadoService: ReformadoService){}
 
-    ngOnInit() {}
+  ngOnInit() {
+    this.reformadoService.eletronicosCount$.subscribe(count => {
+      this.reformadosCount = count;
+    });
+  }
 
 }

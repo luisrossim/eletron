@@ -18,6 +18,5 @@ export interface RegisterRequest {
 export interface Usuario {
     nome: string,
     login: string,
-    role: string,
-    ativo: boolean
+    role: string
 }

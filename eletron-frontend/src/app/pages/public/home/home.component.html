@@ -1,41 +1,64 @@
-@if (reformadosCount > 0){
-    <div class="bg-sky-700 text-white text-center py-2 px-6">
-        Reformados disponíveis para venda! 
-        <a class="text-white font-bold no-underline" href="#reformados">Confira!</a>
-    </div>
-}
-
 <app-header></app-header>
 
-<main #main class="container mx-auto py-4 my-4 md:my-6 px-4 md:px-6 main-background" style="background-image: url('assets/img/bg-logo-eletron.png')">
-    <div class="flex flex-col text-center md:text-left gap-5">
-        <div #title class="title text-4xl md:text-7xl font-semibold">
-            Assistência técnica <br> de eletrônicos em geral
-        </div>
 
-        <div class="flex md:justify-start justify-center items-center mb-7">
-            <a routerLink="/status">
-                <p-button icon="pi pi-search" size="small" [rounded]="true" label="Consultar serviço"></p-button>
-            </a>
+<main #main class="container mx-auto py-4 mt-28 px-2 md:px-6">
+    <div #title class="title text-center md:text-left mb-8">
+        <p class="text-4xl md:text-6xl font-semibold my-0">
+            Assistência técnica de eletrônicos em geral
+        </p>
+        <div class="flex gap-4 text-xs md:text-base md:justify-start justify-center items-center text-zinc-600 mt-3">
+            <p class="my-0"><i class="pi pi-whatsapp mr-2"></i>(27) 99969-2465</p>
+            <p class="my-0"><i class="pi pi-map-marker mr-2"></i>Nova Venécia-ES</p>
         </div>
+    </div>
 
-        <div #map class="lg:w-1/2 rounded-2xl relative overflow-hidden">
-            <div 
-                leaflet 
-                [leafletOptions]="options" 
-                [leafletLayers]="[marker]"
-                class="z-10" style="height: 260px" 
-            ></div>
+    <div class="flex flex-col md:flex-row w-full gap-4">
+        <div class="flex flex-col w-full md:w-1/2 gap-3">
+            <div #map class="rounded-xl relative overflow-hidden surface-border border-2">
+                <div 
+                    leaflet 
+                    [leafletOptions]="options" 
+                    [leafletLayers]="[marker]"
+                    class="z-10" style="height: 300px" 
+                ></div>
+            </div>
         </div>
-
-        <app-reformado-list></app-reformado-list>
+        <div class="flex md:w-1/2 gap-4">
+            <div #horario class="flex relative overflow-hidden flex-col justify-center bg-neutral-800 p-5 border-round w-full">
+                <h1 class="text-4xl font-bold text-neutral-100 mt-0 mb-4 z-10">Horário de funcionamento</h1>
+                <div class="flex flex-col gap-1 text-lg text-neutral-300 z-10 horario-descricao">
+                    <div>
+                        <strong>Segunda</strong> à 
+                        <strong>Sexta</strong> das 
+                        <span>07h</span> até as 
+                        <span>17h</span>
+                    </div>
+                    <div>
+                        <strong>Sábado</strong> das 
+                        <span>07h</span> até as 
+                        <span>12h</span>
+                    </div>
+                </div>
+                <i class="fa fa-clock absolute -top-5 right-5 text-zinc-700 opacity-80 z-0" style="font-size: 200px"></i>
+            </div>
+        </div>
     </div>
 </main>
 
-<div class="h-48 hidden lg:block lines-background" style="background-image: url('assets/img/bg-lines.png')"></div>
+<div #reformados>
+    <div class="flex w-full justify-center h-24 mt-14">
+        <div style="width: 1px;" class="bg-zinc-200"></div>
+    </div>
+    
+    <div class="container mx-auto mt-14 px-6">
+        <app-reformado-list></app-reformado-list>
+    </div>
+</div>
+
 
 <div class="fixed z-50 bottom-10 md:bottom-20 right-10 md:right-20">
     <p-button icon="pi pi-whatsapp" [rounded]="true" severity="success" size="large" />
 </div>
+
 
 <app-footer></app-footer>

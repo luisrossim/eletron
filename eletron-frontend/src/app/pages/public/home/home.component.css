@@ -4,18 +4,6 @@ main .title {
     font-family: 'Host Grotesk' , sans-serif !important;
 }
 
-.main-background {
-    background-size: cover;
-    background-position: bottom;
-    background-repeat: no-repeat; 
-}
-
-.lines-background {
-    background-size: cover;
-    background-position: top;
-    background-repeat: no-repeat; 
-}
-
 .glass-effect {
     background: #00000000;
     backdrop-filter: blur(4px);
@@ -26,13 +14,4 @@ main .title {
     --tw-gradient-from-position: ;
     --tw-gradient-via-position: ;
     --tw-gradient-to-position: ;
-}
-
-.info {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 2rem 0rem;
-    font-weight: bold;
-    color: rgb(54, 54, 54);
 }

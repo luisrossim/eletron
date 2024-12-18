@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CarouselModule } from 'primeng/carousel';
 import { TagModule } from 'primeng/tag';
 import { ButtonModule } from 'primeng/button';
 import { Reformado } from '../../models/reformado';
 import { ReformadoService } from '../../core/services/reformado.service';
+import { ToastService } from '../../utils/services/toast.service';
 
 @Component({
   selector: 'app-reformado-list',
@@ -13,6 +14,7 @@ import { ReformadoService } from '../../core/services/reformado.service';
   styleUrl: './reformado-list.component.css'
 })
 export class ReformadoListComponent implements OnInit {
+  toastService = inject(ToastService)
   reformados: Reformado[] = [];
   responsiveOptions: any[] = [];
 
@@ -28,7 +30,11 @@ export class ReformadoListComponent implements OnInit {
         this.reformados = reformados
       ),
       error: (error) => { 
-        console.log(error); 
+        this.toastService.send({
+          severity: "error",
+          summary: "Error",
+          detail: "Erro ao buscar reformados."
+        });
       },
       complete: () => {
         this.reformadoService.updateReformadosCount(this.reformados.length);

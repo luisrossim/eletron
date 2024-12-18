@@ -1,15 +1,12 @@
-.main-background {
-    background-size: cover;
-    background-position: bottom;
-    background-repeat: no-repeat; 
+footer {
+    max-width: 72rem;
 }
 
-.horario-descricao div span, .horario-descricao div strong {
-    font-size: 20px;
+footer a {
+    color: #888888;
+    text-decoration: none;
 }
 
-@media (max-width: 768px) {
-    .horario-descricao div span, .horario-descricao div strong {
-        font-size: 16px;
-    }
+footer a:hover {
+    text-decoration: underline;
 }

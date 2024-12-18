@@ -22,6 +22,8 @@ import { ReformadoService } from '../../../core/services/reformado.service';
 export class HomeComponent implements OnInit, AfterViewInit  {
   @ViewChild('title') title!: ElementRef<HTMLDivElement>
   @ViewChild('map') map!: ElementRef<HTMLDivElement>
+  @ViewChild('horario') horario!: ElementRef<HTMLDivElement>
+  @ViewChild('reformados') reformados!: ElementRef<HTMLDivElement>
 
   reformadosCount = 0;
 
@@ -80,5 +82,11 @@ export class HomeComponent implements OnInit, AfterViewInit  {
 
     gsap.from(this.map.nativeElement, {scale: 0.7, opacity: 0})
     gsap.to(this.map.nativeElement, {scale: 1, opacity: 1, ease:'power4.out', duration: 2})
+
+    gsap.from(this.horario.nativeElement, {x: "50px", opacity: 0})
+    gsap.to(this.horario.nativeElement, {x: "0px", opacity: 1, ease:'power4.out', duration: 2})
+
+    gsap.from(this.reformados.nativeElement, {opacity: 0})
+    gsap.to(this.reformados.nativeElement, {opacity: 1, ease:'power4.out', duration: 3})
   }
 }

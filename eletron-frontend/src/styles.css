@@ -58,12 +58,7 @@ body {
 }
 
 body, .p-toast { 
-    font-family: 'Inter', sans-serif !important; 
-    /* background-color: #f9f9f9;
-    background-image: radial-gradient(circle, #dadada 1px, #0000 0);
-    background-size: 36px 36px;
-    color: var(--secundario);
-    overscroll-behavior-y: contain; */
+    font-family: 'Inter', sans-serif !important;
 }
 
 .img-fluid {

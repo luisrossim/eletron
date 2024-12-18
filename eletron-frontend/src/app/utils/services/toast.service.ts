@@ -9,10 +9,10 @@ export class ToastService {
 
   INIT_STATE = "INIT";
 
-  private send$ = new BehaviorSubject<Message>({summary: this.INIT_STATE});
-  sendSub = this.send$.asObservable();
+  private sendSubject = new BehaviorSubject<Message>({summary: this.INIT_STATE});
+  send$ = this.sendSubject.asObservable();
 
   public send(message: Message): void {
-    this.send$.next(message);
+    this.sendSubject.next(message);
   }
 }
