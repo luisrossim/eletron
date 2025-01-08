@@ -12,12 +12,12 @@ import { ReformadoService } from '../../core/services/reformado.service';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent implements OnInit {
-  reformadosCount = 0;
+  reformadosCount: number = 0;
 
   constructor(private reformadoService: ReformadoService){}
 
   ngOnInit() {
-    this.reformadoService.eletronicosCount$.subscribe(count => {
+    this.reformadoService.eletronicosCount$.subscribe((count) => {
       this.reformadosCount = count;
     });
   }

@@ -10,9 +10,9 @@ export const authInterceptor: HttpInterceptorFn = (req: HttpRequest<unknown>, ne
   const toastService = inject(ToastService)
   const authService = inject(AuthService)
 
-  const usuario = authService.getUserFromCookie();
   utilities.setLoading(true);
 
+  const usuario = authService.getUserFromCookie();
   if (usuario) {
     req = req.clone({
       setHeaders: { Authorization: `Bearer ${usuario.token}` }
@@ -21,18 +21,14 @@ export const authInterceptor: HttpInterceptorFn = (req: HttpRequest<unknown>, ne
 
   return next(req).pipe(
     tap({
-      next: () => {
-        utilities.setLoading(false);
-      },
       error: (error: HttpErrorResponse) => {
         utilities.setLoading(false);
         if (error.status === 403) {
-          toastService.send({
-            severity: "error",
-            summary: "Acesso negado",
-            detail: "Você não tem permissão para acessar esse recurso."
-          });
+          toastService.showError403();
         }
+      },
+      complete: () => {
+        utilities.setLoading(false);
       }
     })
   )

@@ -1,9 +1,17 @@
-<header #header class="fixed top-0 left-0 w-full z-50 border-bottom-1 surface-border bg-white">
-    <div class="container mx-auto py-2 px-4 md:px-6">
+@if(reformadosCount > 0){
+    <div class="flex flex-wrap justify-center items-center gap-2 md:text-base text-sm text-center bg-sky-700 text-neutral-200 py-2">
+        <i class="fa fa-tv"></i>
+        <span>Reformados disponíveis para venda!</span>
+        <a class="text-white" href="#reformados">Conferir</a>
+    </div>
+}
+
+<header #header class="sticky top-0 left-0 w-full z-50 border-bottom-1 surface-border glass-effect">
+    <div class="container mx-auto py-3 px-4 md:px-6">
         <div class="flex items-center justify-between gap-2">
             <a class="flex items-center gap-3 no-underline text-black" href="/">
-                <img width="15px" class="img-fluid" src="assets/img/logo-black-eletron.png" alt="eletron-logo">
-                <span class="text-sm font-medium">ELETRÔNICA DO LUIS</span>
+                <img width="20px" class="img-fluid" src="assets/img/logo-black-eletron.png" alt="eletron-logo">
+                <span class="text-lg font-semibold hidden md:block">ELETRÔNICA DO LUIS</span>
             </a>
             <div>
                 <a routerLink="/status">

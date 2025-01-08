@@ -12,7 +12,7 @@ export class ReformadoService extends CrudService<Reformado> {
   }
 
   private reformadosCountSubject = new BehaviorSubject<number>(0);
-  eletronicosCount$ = this.reformadosCountSubject.asObservable();
+  public eletronicosCount$ = this.reformadosCountSubject.asObservable();
 
   updateReformadosCount(count: number): void {
     this.reformadosCountSubject.next(count);
