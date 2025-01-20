@@ -3,7 +3,7 @@ import { ButtonModule } from 'primeng/button';
 import { HeaderComponent } from "../../../components/header/header.component";
 import { FooterComponent } from "../../../components/footer/footer.component";
 import { CardModule } from 'primeng/card';
-import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { LeafletModule } from '@bluehalo/ngx-leaflet';
 import { latLng, marker, tileLayer, icon } from 'leaflet';
 import { RouterModule } from '@angular/router';
 import { gsap } from 'gsap';
